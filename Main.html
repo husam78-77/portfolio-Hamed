@@ -7,6 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Neue+Haas+Grotesk+Display+Pro:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -54,54 +60,119 @@
     </section>
 
     <!-- ===== About Section ===== -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About</h2>
-            <p>
-                Fashion is not just style. It’s transformation.
-                Each look represents a different identity, mood, and story.
-            </p>
+    <section id="about" class="about-section">
+
+        <div class="about-container">
+
+            <!-- Text -->
+            <div class="about-text reveal-left">
+                <h2>ABOUT</h2>
+                <p>
+                    Fashion is not just style. It’s transformation.
+                    Each look represents a different identity, mood, and story.
+                </p>
+            </div>
+
+            <!-- Image Side -->
+            <div class="about-image-wrapper reveal-right">
+
+                <div class="about-bg-live"></div>
+
+                <div class="about-accent"></div>
+
+                <img src="images/look1.jpg" alt="About Image">
+
+            </div>
+
         </div>
+
     </section>
 
 
     <!-- ===== Chapters Section ===== -->
     <section id="chapters" class="chapters">
-        <h2>Chapters</h2>
 
-        <div class="chapter">
-            <h3>Metal</h3>
-            <p>Strength in structure.</p>
+        <div class="chapters-header">
+            <div class="rule"></div>
+            <div class="label">
+                <span></span>
+                The Collection
+            </div>
+            <div class="rule"></div>
         </div>
 
-        <div class="chapter">
-            <h3>Bloom</h3>
-            <p>Softness with power.</p>
+        <div class="chapter-item">
+            <div class="chapter-image" data-num="No. 01">
+                <img src="images/look1.jpg" alt="Metal">
+            </div>
+            <div class="chapter-content">
+                <div class="chapter-eyebrow">Chapter One</div>
+                <h2 class="chapter-title">
+                    Metal
+                    <em>Hard &amp; Cold</em>
+                </h2>
+                <div class="chapter-divider"></div>
+                <p class="chapter-desc">Strength found in structure. Where industrial edges meet sculptural form —
+                    armour as identity.</p>
+                <a href="#" class="chapter-cta">Explore the Look</a>
+                <div class="chapter-folio">p. 001</div>
+            </div>
         </div>
 
-        <div class="chapter">
-            <h3>Shadow</h3>
-            <p>Light defines darkness.</p>
+        <div class="chapter-item reverse">
+            <div class="chapter-image" data-num="No. 02">
+                <img src="images/look2.jpg" alt="Bloom">
+            </div>
+            <div class="chapter-content">
+                <div class="chapter-eyebrow">Chapter Two</div>
+                <h2 class="chapter-title">
+                    Bloom
+                    <em>Soft &amp; Alive</em>
+                </h2>
+                <div class="chapter-divider"></div>
+                <p class="chapter-desc">Softness wielded with power. Petals pressed against pavement — the feminine as
+                    force.</p>
+                <a href="#" class="chapter-cta">Explore the Look</a>
+                <div class="chapter-folio">p. 002</div>
+            </div>
         </div>
 
-        <div class="chapter">
-            <h3>Edge</h3>
-            <p>Confidence in motion.</p>
+        <div class="chapter-item">
+            <div class="chapter-image" data-num="No. 03">
+                <img src="images/look1.jpg" alt="Shadow">
+            </div>
+            <div class="chapter-content">
+                <div class="chapter-eyebrow">Chapter Three</div>
+                <h2 class="chapter-title">
+                    Shadow
+                    <em>Dark &amp; Still</em>
+                </h2>
+                <div class="chapter-divider"></div>
+                <p class="chapter-desc">Light exists only to define darkness. Silhouettes carved from silence — presence
+                    through absence.</p>
+                <a href="#" class="chapter-cta">Explore the Look</a>
+                <div class="chapter-folio">p. 003</div>
+            </div>
         </div>
 
-    </section>
-
-
-    <!-- ===== Work Section ===== -->
-    <section id="work" class="work">
-        <h2>Selected Works</h2>
-
-        <div class="gallery">
-            <img src="images/look1.jpg" alt="">
-            <img src="images/look2.jpg" alt="">
-            <img src="images/look3.jpg" alt="">
-            <img src="images/look4.jpg" alt="">
+        <div class="chapter-item reverse">
+            <div class="chapter-image" data-num="No. 04">
+                <img src="images/look2.jpg" alt="Edge">
+            </div>
+            <div class="chapter-content">
+                <div class="chapter-eyebrow">Chapter Four</div>
+                <h2 class="chapter-title">
+                    Edge
+                    <em>Sharp &amp; Free</em>
+                </h2>
+                <div class="chapter-divider"></div>
+                <p class="chapter-desc">Confidence rendered in motion. The body as blade — cutting through with
+                    deliberate intention.</p>
+                <a href="#" class="chapter-cta">Explore the Look</a>
+                <div class="chapter-folio">p. 004</div>
+            </div>
         </div>
+
     </section>
 
 
@@ -117,7 +188,46 @@
     <footer>
         <p>© 2026 All Rights Reserved</p>
     </footer>
+    <!-- ===== Chapter Overlay ===== -->
+    <div class="chapter-overlay" id="chapterOverlay" role="dialog" aria-modal="true" aria-labelledby="overlayTitle">
 
+        <div class="overlay-backdrop"></div>
+        <div class="overlay-progress"></div>
+
+        <button class="overlay-close" id="overlayClose" aria-label="Close">
+            <svg viewBox="0 0 24 24">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+        </button>
+
+        <div class="overlay-content">
+
+            <div class="overlay-main">
+
+                <div class="overlay-image-pane">
+                    <img id="overlayMainImage" src="" alt="">
+                </div>
+
+                <div class="overlay-info-pane">
+                    <p class="overlay-chapter-label">Chapter</p>
+                    <h2 class="overlay-title">
+                        <span class="overlay-title-inner" id="overlayTitle"></span>
+                    </h2>
+                    <div class="overlay-divider"></div>
+                    <p class="overlay-description" id="overlayDescription"></p>
+                </div>
+
+            </div>
+
+            <div class="overlay-gallery-strip">
+                <div class="overlay-gallery" id="overlayGallery"></div>
+                <span class="gallery-count" id="galleryCount"></span>
+            </div>
+
+        </div>
+
+    </div>
 
     <script src="script.js"></script>
 </body>
