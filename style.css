@@ -22,10 +22,14 @@ body {
 }
 
 header {
-    position: fixed;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    background: rgba(15, 15, 15, 0.8);
-    backdrop-filter: blur(10px);
+    height: 80px;
+
+    background: transparent;
+    transition: 0.4s ease;
     z-index: 1000;
 }
 
@@ -56,7 +60,9 @@ header {
     list-style: none;
     display: flex;
     gap: 2rem;
+}
 
+.nav-links li {
     opacity: 0;
     transform: translateX(20px);
     pointer-events: none;
@@ -67,6 +73,28 @@ header {
     opacity: 1;
     transform: translateX(0);
     pointer-events: auto;
+}
+
+.navbar:hover .nav-links li {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.nav-links li:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.nav-links li:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.nav-links li:nth-child(3) {
+    transition-delay: 0.15s;
+}
+
+.nav-links li:nth-child(4) {
+    transition-delay: 0.2s;
 }
 
 .navbar:hover .home-link {
@@ -111,4 +139,83 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+
+    --x: 50%;
+    --y: 50%;
+
+    clip-path: circle(0% at var(--x) var(--y));
+    transition: clip-path 1.2s ease-in-out;
+}
+
+.slide.active {
+    clip-path: circle(150% at var(--x) var(--y));
+}
+
+.bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%) blur(6px);
+    transform: scale(1.1);
+    opacity: 0.5;
+}
+
+.foreground {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 85%;
+    height: 85%;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+}
+
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 6vw, 6rem);
+    letter-spacing: 8px;
+    font-weight: 600;
+    color: white;
+}
+
+.slide:nth-child(1) .bg {
+    background-image: url("images/look1.jpg");
+}
+
+.slide:nth-child(1) .foreground {
+    background-image: url("images/look1.jpg");
+}
+
+.slide:nth-child(2) .bg {
+    background-image: url("images/look2.jpg");
+}
+
+.slide:nth-child(2) .foreground {
+    background-image: url("images/look2.jpg");
 }
