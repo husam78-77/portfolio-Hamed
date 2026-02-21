@@ -21,24 +21,19 @@
     <header>
         <nav class="navbar">
             <div class="logo">NAME</div>
-
             <div class="nav-right">
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#chapters">Chapters</a></li>
-                    <li><a href="#work">Work</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <a href="#home" class="home-link">Home</a>
-
-
             </div>
         </nav>
     </header>
 
-
     <!-- ===== Hero Section (Cinematic Slider) ===== -->
-    <section class="hero">
+    <section class="hero" id="home">
 
         <!-- Slide 1 -->
         <div class="slide active">
@@ -57,37 +52,40 @@
             <h1 class="hero-title">HAMED</h1>
         </div>
 
+        <!-- Slide progress dots -->
+        <div class="hero-progress" id="heroDots"></div>
+
+        <!-- Scroll cue -->
+        <div class="scroll-cue">
+            <div class="scroll-cue-line"></div>
+            <span>Scroll</span>
+        </div>
+
     </section>
 
     <!-- ===== About Section ===== -->
     <section id="about" class="about-section">
-
         <div class="about-container">
 
             <!-- Text -->
             <div class="about-text reveal-left">
+                <span class="about-label">The Story</span>
                 <h2>ABOUT</h2>
                 <p>
-                    Fashion is not just style. It’s transformation.
+                    Fashion is not just style. It's transformation.
                     Each look represents a different identity, mood, and story.
                 </p>
             </div>
 
             <!-- Image Side -->
             <div class="about-image-wrapper reveal-right">
-
                 <div class="about-bg-live"></div>
-
                 <div class="about-accent"></div>
-
                 <img src="images/look1.jpg" alt="About Image">
-
             </div>
 
         </div>
-
     </section>
-
 
     <!-- ===== Chapters Section ===== -->
     <section id="chapters" class="chapters">
@@ -177,10 +175,67 @@
 
 
     <!-- ===== Contact Section ===== -->
-    <section id="contact" class="contact">
-        <h2>Contact</h2>
-        <p>Let’s collaborate.</p>
-        <a href="mailto:email@example.com">email@example.com</a>
+    <section id="contact" class="contact-section">
+
+        <!-- Decorative large background text -->
+        <span class="contact-bg-word" aria-hidden="true">CONTACT</span>
+
+        <div class="contact-inner">
+
+            <!-- Left: editorial heading -->
+            <div class="contact-left reveal-left">
+                <span class="contact-label">Get in Touch</span>
+                <h2 class="contact-heading">
+                    Let's make<br>
+                    <em>something</em><br>
+                    together.
+                </h2>
+
+                <!-- Decorative gold rule -->
+                <div class="contact-rule"></div>
+
+                <!-- Social links -->
+                <div class="contact-socials">
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <span class="social-icon">&#x25A1;</span>
+                        <span>Instagram</span>
+                    </a>
+
+
+                </div>
+            </div>
+
+            <!-- Right: contact info + mailto CTA -->
+            <div class="contact-right reveal-right">
+
+                <div class="contact-detail">
+                    <span class="contact-detail-label">Email</span>
+                    <a href="mailto:email@example.com" class="contact-email">
+                        email@example.com
+                    </a>
+                </div>
+
+                <div class="contact-detail">
+                    <span class="contact-detail-label">Based in</span>
+                    <span class="contact-detail-value">Riyadh, Saudi Arabia</span>
+                </div>
+
+                <div class="contact-detail">
+                    <span class="contact-detail-label">Availability</span>
+                    <span class="contact-detail-value">
+                        <span class="availability-dot"></span>
+                        Open to projects
+                    </span>
+                </div>
+
+                <a href="mailto:email@example.com" class="contact-cta">
+                    <span class="contact-cta-text">Start a Conversation</span>
+                    <span class="contact-cta-arrow">&#8599;</span>
+                </a>
+
+            </div>
+        </div>
+
     </section>
 
 

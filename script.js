@@ -1,260 +1,269 @@
-const transitions = [
-    "center",
-    "left",
-    "right",
-    "top",
-    "bottom",
-    "random"
-];
-function getRandomTransition() {
-    return transitions[Math.floor(Math.random() * transitions.length)];
-}
-
-const selected = getRandomTransition();
-
-function applyTransition(type) {
-    const slides = document.querySelectorAll('.slide');
-
-    slides.forEach(slide => {
-        switch (type) {
-            case "center":
-                slide.style.setProperty('--x', '50%');
-                slide.style.setProperty('--y', '50%');
-                break;
-
-            case "left":
-                slide.style.setProperty('--x', '0%');
-                slide.style.setProperty('--y', '50%');
-                break;
-
-            case "right":
-                slide.style.setProperty('--x', '100%');
-                slide.style.setProperty('--y', '50%');
-                break;
-
-            case "top":
-                slide.style.setProperty('--x', '50%');
-                slide.style.setProperty('--y', '0%');
-                break;
-
-            case "bottom":
-                slide.style.setProperty('--x', '50%');
-                slide.style.setProperty('--y', '100%');
-                break;
-
-            case "random":
-                const x = Math.random() * 100 + "%";
-                const y = Math.random() * 100 + "%";
-                slide.style.setProperty('--x', x);
-                slide.style.setProperty('--y', y);
-                break;
-        }
-    });
-}
-applyTransition(selected);
+// ─── HERO SLIDER ────────────────────────────────────────────────────────────
 
 const slides = document.querySelectorAll('.slide');
 let current = 0;
+let autoplayTimer;
 
-setInterval(() => {
+const ORIGINS = [
+    { x: '50%', y: '50%' }, // center
+    { x: '0%', y: '50%' }, // left
+    { x: '100%', y: '50%' }, // right
+    { x: '50%', y: '0%' }, // top
+    { x: '50%', y: '100%' }, // bottom
+];
+
+/**
+ * Assign a unique reveal origin to every slide at load time.
+ * Consecutive slides will always differ.
+ */
+function assignOrigins() {
+    let lastIdx = -1;
+    slides.forEach(slide => {
+        let idx;
+        do { idx = Math.floor(Math.random() * ORIGINS.length); }
+        while (idx === lastIdx && ORIGINS.length > 1);
+        lastIdx = idx;
+
+        const { x, y } = ORIGINS[idx];
+        slide.style.setProperty('--x', x);
+        slide.style.setProperty('--y', y);
+    });
+}
+assignOrigins();
+
+// ─── Progress dots ───────────────────────────────────────────────────────────
+
+const dotsContainer = document.getElementById('heroDots');
+
+function buildDots() {
+    slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+    });
+}
+buildDots();
+
+function updateDots() {
+    dotsContainer.querySelectorAll('.hero-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === current);
+    });
+}
+
+// ─── Slide navigation ────────────────────────────────────────────────────────
+
+function goTo(index) {
     slides[current].classList.remove('active');
-    current = (current + 1) % slides.length;
+    current = (index + slides.length) % slides.length;
     slides[current].classList.add('active');
-}, 5000);
+    updateDots();
+    resetAutoplay();
+}
 
-const header = document.querySelector("header");
+function next() {
+    goTo(current + 1);
+}
 
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-        header.style.position = "fixed";
-        header.style.background = "rgba(15, 15, 15, 0.9)";
-        header.style.backdropFilter = "blur(10px)";
-    } else {
-        header.style.position = "absolute";
-        header.style.background = "transparent";
-        header.style.backdropFilter = "none";
-    }
+function resetAutoplay() {
+    clearInterval(autoplayTimer);
+    autoplayTimer = setInterval(next, 5000);
+}
+
+resetAutoplay();
+
+// ─── Cursor-tracking hero title parallax ─────────────────────────────────────
+
+const heroSection = document.querySelector('.hero');
+const heroTitle = document.querySelector('.hero-title');
+
+heroSection.addEventListener('mousemove', (e) => {
+    const { clientWidth: w, clientHeight: h } = heroSection;
+    const dx = (e.clientX / w - 0.5) * 18;
+    const dy = (e.clientY / h - 0.5) * 10;
+    heroTitle.style.transform = `translate(${dx}px, ${dy}px)`;
 });
 
+heroSection.addEventListener('mouseleave', () => {
+    heroTitle.style.transform = 'translate(0, 0)';
+});
 
-/*ABOUT SECTION*/
-const animatedElements = document.querySelectorAll('.reveal-left, .reveal-right');
+// ─── HEADER SCROLL BEHAVIOUR ──────────────────────────────────────────────────
 
-const observer = new IntersectionObserver((entries) => {
+const header = document.querySelector('header');
+
+window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// ─── INTERSECTION OBSERVER — reveal animations ────────────────────────────────
+
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-        } else {
-            entry.target.classList.remove('active');
-        }
+        entry.target.classList.toggle('active', entry.isIntersecting);
     });
 }, {
-    threshold: 0.3
+    threshold: 0.2,
+    rootMargin: '0px 0px -40px 0px',
 });
 
-animatedElements.forEach(el => observer.observe(el));
+revealEls.forEach(el => revealObserver.observe(el));
 
-/*ABOUT SECTION*/
+// ─── CHAPTER SECTION ─────────────────────────────────────────────────────────
 
-
-/*Chapter section */
-function Chapter() {
+function initChapters() {
     const items = document.querySelectorAll('.chapter-item');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.classList.add('visible');
-            } else {
-                e.target.classList.remove('visible');
-            }
+            e.target.classList.toggle('visible', e.isIntersecting);
         });
     }, { threshold: 0.15 });
 
     items.forEach(item => observer.observe(item));
 }
-Chapter(selected);
+initChapters();
 
-/*Chapter section */
+// ─── CHAPTER OVERLAY ─────────────────────────────────────────────────────────
 
-/*overlay section */
-
-const overlay = document.getElementById("chapterOverlay");
-const overlayClose = document.getElementById("overlayClose");
-const overlayTitle = document.getElementById("overlayTitle");
-const overlayMainImg = document.getElementById("overlayMainImage");
-const overlayGallery = document.getElementById("overlayGallery");
-const overlayDesc = document.getElementById("overlayDescription");
-const galleryCount = document.getElementById("galleryCount");
+const overlay = document.getElementById('chapterOverlay');
+const overlayClose = document.getElementById('overlayClose');
+const overlayTitle = document.getElementById('overlayTitle');
+const overlayMainImg = document.getElementById('overlayMainImage');
+const overlayGallery = document.getElementById('overlayGallery');
+const overlayDesc = document.getElementById('overlayDescription');
+const galleryCount = document.getElementById('galleryCount');
 
 const chapterData = {
-    "Metal": {
-        main: "images/look1.jpg",
-        description: "Cold precision meets raw beauty. A study in reflective surfaces and industrial tension.",
+    Metal: {
+        main: 'images/look1.jpg',
+        description: 'Cold precision meets raw beauty. A study in reflective surfaces and industrial tension.',
         gallery: [
-            "images/look1.jpg",
-            "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=70",
-            "https://images.unsplash.com/photo-1541960071727-c531398e7b79?w=400&q=70",
-            "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=400&q=70",
+            'images/look1.jpg',
+            'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=70',
+            'https://images.unsplash.com/photo-1541960071727-c531398e7b79?w=400&q=70',
+            'https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=400&q=70',
         ]
     },
-    "Bloom": {
-        main: "https://images.unsplash.com/photo-1490750967868-88df5691cc5e?w=1200&q=80",
-        description: "Softness rendered sharp. The paradox of fragile things that endure seasons.",
+    Bloom: {
+        main: 'https://images.unsplash.com/photo-1490750967868-88df5691cc5e?w=1200&q=80',
+        description: 'Softness rendered sharp. The paradox of fragile things that endure seasons.',
         gallery: [
-            "https://images.unsplash.com/photo-1490750967868-88df5691cc5e?w=400&q=70",
-            "https://images.unsplash.com/photo-1444021465936-c6ca81d39b84?w=400&q=70",
-            "https://images.unsplash.com/photo-1487530811015-780a25fa0f65?w=400&q=70",
-            "https://images.unsplash.com/photo-1455582916367-25f75bfc6710?w=400&q=70",
+            'https://images.unsplash.com/photo-1490750967868-88df5691cc5e?w=400&q=70',
+            'https://images.unsplash.com/photo-1444021465936-c6ca81d39b84?w=400&q=70',
+            'https://images.unsplash.com/photo-1487530811015-780a25fa0f65?w=400&q=70',
+            'https://images.unsplash.com/photo-1455582916367-25f75bfc6710?w=400&q=70',
         ]
     },
-    "Shadow": {
-        main: "https://images.unsplash.com/photo-1516410529446-2c777cb7366d?w=1200&q=80",
-        description: "What exists between light and dark is not nothing — it is everything left unseen.",
+    Shadow: {
+        main: 'https://images.unsplash.com/photo-1516410529446-2c777cb7366d?w=1200&q=80',
+        description: 'What exists between light and dark is not nothing — it is everything left unseen.',
         gallery: [
-            "https://images.unsplash.com/photo-1516410529446-2c777cb7366d?w=400&q=70",
-            "https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?w=400&q=70",
-            "https://images.unsplash.com/photo-1520052205864-92d242b3a76b?w=400&q=70",
-            "https://images.unsplash.com/photo-1541694769-90b4e50b73db?w=400&q=70",
+            'https://images.unsplash.com/photo-1516410529446-2c777cb7366d?w=400&q=70',
+            'https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?w=400&q=70',
+            'https://images.unsplash.com/photo-1520052205864-92d242b3a76b?w=400&q=70',
+            'https://images.unsplash.com/photo-1541694769-90b4e50b73db?w=400&q=70',
         ]
     },
-    "Edge": {
-        main: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1200&q=80",
-        description: "The boundary is not a limit. It is the beginning of the next form.",
+    Edge: {
+        main: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1200&q=80',
+        description: 'The boundary is not a limit. It is the beginning of the next form.',
         gallery: [
-            "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&q=70",
-            "https://images.unsplash.com/photo-1519810755548-39cd217da494?w=400&q=70",
-            "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=70",
-            "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&q=70",
+            'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&q=70',
+            'https://images.unsplash.com/photo-1519810755548-39cd217da494?w=400&q=70',
+            'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=70',
+            'https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&q=70',
         ]
     }
 };
 
-let currentData = null;
+function setActiveThumb(thumbEl) {
+    overlayGallery.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+    thumbEl.classList.add('active');
+}
+
+function swapMainImage(src) {
+    overlayMainImg.style.opacity = '0';
+    setTimeout(() => {
+        overlayMainImg.src = src;
+        overlayMainImg.style.opacity = '1';
+    }, 300);
+}
 
 function openOverlay(title) {
     const data = chapterData[title];
     if (!data) return;
-    currentData = data;
 
     overlayTitle.textContent = title;
+    overlayDesc.textContent = data.description;
+    galleryCount.textContent = `${data.gallery.length} looks`;
+
+    // Set main image immediately (no fade on open)
     overlayMainImg.src = data.main;
     overlayMainImg.alt = title;
-    overlayDesc.textContent = data.description;
+    overlayMainImg.style.opacity = '1';
 
-    overlayGallery.innerHTML = "";
-
+    // Build thumbnails
+    overlayGallery.innerHTML = '';
     data.gallery.forEach((src, i) => {
-        const thumb = document.createElement("div");
-        thumb.className = "gallery-thumb" + (i === 0 ? " active" : "");
+        const thumb = document.createElement('div');
+        thumb.className = 'gallery-thumb' + (i === 0 ? ' active' : '');
 
-        const img = document.createElement("img");
+        const img = document.createElement('img');
         img.src = src;
         img.alt = `${title} ${i + 1}`;
         thumb.appendChild(img);
 
-        thumb.addEventListener("click", () => {
-            // Swap main image
-            overlayMainImg.style.transition = "opacity 0.3s ease";
-            overlayMainImg.style.opacity = "0";
-            setTimeout(() => {
-                overlayMainImg.src = src;
-                overlayMainImg.style.opacity = "1";
-            }, 300);
-
-            // Update active state
-            overlayGallery.querySelectorAll(".gallery-thumb").forEach(t => t.classList.remove("active"));
-            thumb.classList.add("active");
+        thumb.addEventListener('click', () => {
+            swapMainImage(src);
+            setActiveThumb(thumb);
         });
 
         overlayGallery.appendChild(thumb);
     });
 
-    galleryCount.textContent = `${data.gallery.length} looks`;
-
-    overlay.classList.add("active");
-    document.body.style.overflow = "hidden";
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
     overlayClose.focus();
 }
 
 function closeOverlay() {
-    overlay.classList.remove("active");
-    document.body.style.overflow = "";
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
 }
 
-// Trigger from chapter buttons
+// Open overlay from chapter CTA buttons
 document.querySelectorAll('.chapter-cta').forEach(btn => {
     btn.addEventListener('click', function (e) {
         e.preventDefault();
-
-        const titleElement = this.closest('.chapter-item')
-            .querySelector('.chapter-title');
-
-        const title = titleElement.childNodes[0].nodeValue.trim();
-
+        const titleEl = this.closest('.chapter-item').querySelector('.chapter-title');
+        const title = titleEl.childNodes[0].nodeValue.trim();
         openOverlay(title);
     });
 });
 
 // Close button
-overlayClose.addEventListener("click", closeOverlay);
+overlayClose.addEventListener('click', closeOverlay);
 
 // Click backdrop to close
-overlay.addEventListener("click", (e) => {
+overlay.addEventListener('click', (e) => {
     if (e.target === overlay) closeOverlay();
 });
 
-// Keyboard: Escape
-document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && overlay.classList.contains("active")) {
-        closeOverlay();
-    }
-    // Arrow keys to cycle gallery
-    if (overlay.classList.contains("active")) {
-        const thumbs = [...overlayGallery.querySelectorAll(".gallery-thumb")];
-        const activeIdx = thumbs.findIndex(t => t.classList.contains("active"));
-        if (e.key === "ArrowRight" && activeIdx < thumbs.length - 1) thumbs[activeIdx + 1].click();
-        if (e.key === "ArrowLeft" && activeIdx > 0) thumbs[activeIdx - 1].click();
-    }
-});
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (!overlay.classList.contains('active')) return;
 
-/*overlay section */
+    if (e.key === 'Escape') {
+        closeOverlay();
+        return;
+    }
+
+    const thumbs = [...overlayGallery.querySelectorAll('.gallery-thumb')];
+    const activeIdx = thumbs.findIndex(t => t.classList.contains('active'));
+
+    if (e.key === 'ArrowRight' && activeIdx < thumbs.length - 1) thumbs[activeIdx + 1].click();
+    if (e.key === 'ArrowLeft' && activeIdx > 0) thumbs[activeIdx - 1].click();
+});
