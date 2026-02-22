@@ -97,6 +97,27 @@ window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
+// ─── MOBILE HAMBURGER MENU ───────────────────────────────────────────────────
+
+const navHamburger = document.getElementById('navHamburger');
+const navMobileMenu = document.getElementById('navMobileMenu');
+
+if (navHamburger && navMobileMenu) {
+    navHamburger.addEventListener('click', () => {
+        const isOpen = navMobileMenu.classList.toggle('open');
+        navHamburger.classList.toggle('open', isOpen);
+        navHamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    navMobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMobileMenu.classList.remove('open');
+            navHamburger.classList.remove('open');
+            navHamburger.setAttribute('aria-expanded', 'false');
+        });
+    });
+}
+
 // ─── INTERSECTION OBSERVER — reveal animations ────────────────────────────────
 
 const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
@@ -239,7 +260,10 @@ document.querySelectorAll('.chapter-cta').forEach(btn => {
     btn.addEventListener('click', function (e) {
         e.preventDefault();
         const titleEl = this.closest('.chapter-item').querySelector('.chapter-title');
-        const title = titleEl.childNodes[0].nodeValue.trim();
+        const title = [...titleEl.childNodes]
+            .filter(n => n.nodeType === Node.TEXT_NODE)
+            .map(n => n.nodeValue.trim())
+            .find(t => t.length > 0);
         openOverlay(title);
     });
 });
@@ -278,15 +302,13 @@ let rx = -100, ry = -100;
 
 window.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
-    wpCursor.style.left = mx + 'px';
-    wpCursor.style.top = my + 'px';
+    if (wpCursor) { wpCursor.style.left = mx + 'px'; wpCursor.style.top = my + 'px'; }
 });
 
 function animateRing() {
     rx += (mx - rx) * 0.12;
     ry += (my - ry) * 0.12;
-    wpCursorRing.style.left = rx + 'px';
-    wpCursorRing.style.top = ry + 'px';
+    if (wpCursorRing) { wpCursorRing.style.left = rx + 'px'; wpCursorRing.style.top = ry + 'px'; }
     requestAnimationFrame(animateRing);
 }
 animateRing();
@@ -335,6 +357,6 @@ wpFilterBtns.forEach(btn => {
             }
         });
 
-        wpCountEl.textContent = `0${visible} Project${visible !== 1 ? 's' : ''}`;
+        if (wpCountEl) wpCountEl.textContent = `0${visible} Project${visible !== 1 ? 's' : ''}`;
     });
 });

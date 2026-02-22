@@ -19,21 +19,33 @@
     <div id="wp-cursor-ring"></div>
 
     <!-- ===== Header ===== -->
-    <header>
+    <header id="siteHeader">
         <nav class="navbar">
-            <div class="logo">HAMED</div>
+            <a href="#home" class="logo">HAMED</a>
             <div class="nav-right">
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
-                    <li><a href="#work">Work</a></li>
-                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#work">Selected</a></li>
+                    <li><a href="work.html">All Work</a></li>
                     <li><a href="#concept">Concept</a></li>
-                    <li><a href="#skills">Skills</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <a href="#home" class="home-link">Home</a>
             </div>
+            <!-- Mobile hamburger -->
+            <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </nav>
+        <!-- Mobile dropdown -->
+        <div class="nav-mobile-menu" id="navMobileMenu">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Selected</a></li>
+                <li><a href="work.html">All Work</a></li>
+                <li><a href="#concept">Concept</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </header>
 
     <!-- ===== Hero Section ===== -->
@@ -363,7 +375,9 @@
             <div class="contact-right reveal-right">
                 <div class="contact-detail">
                     <span class="contact-detail-label">Email</span>
-                    <a href="mailto:hamed@example.com" class="contact-email">hamed@example.com</a>
+                    <a href="/cdn-cgi/l/email-protection#e189808c8485a18499808c918d84cf828e8c"
+                        class="contact-email"><span class="__cf_email__"
+                            data-cfemail="543c3539313014312c35392438317a373b39">[email&#160;protected]</span></a>
                 </div>
                 <div class="contact-detail">
                     <span class="contact-detail-label">Based in</span>
@@ -376,7 +390,7 @@
                         Open to projects
                     </span>
                 </div>
-                <a href="mailto:hamed@example.com" class="contact-cta">
+                <a href="/cdn-cgi/l/email-protection#4f272e222a2b0f2a372e223f232a612c2022" class="contact-cta">
                     <span class="contact-cta-text">Start a Conversation</span>
                     <span class="contact-cta-arrow">&#8599;</span>
                 </a>
@@ -420,10 +434,7 @@
         </div>
     </div>
 
-    <!-- ===== Scripts ===== -->
     <script src="script.js"></script>
-
-
 
 </body>
 

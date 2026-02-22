@@ -14,15 +14,13 @@ let rx = -100, ry = -100;
 window.addEventListener('mousemove', e => {
     mx = e.clientX;
     my = e.clientY;
-    cursor.style.left = mx + 'px';
-    cursor.style.top = my + 'px';
+    if (cursor) { cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; }
 });
 
 (function animateRing() {
     rx += (mx - rx) * 0.12;
     ry += (my - ry) * 0.12;
-    cursorRing.style.left = rx + 'px';
-    cursorRing.style.top = ry + 'px';
+    if (cursorRing) { cursorRing.style.left = rx + 'px'; cursorRing.style.top = ry + 'px'; }
     requestAnimationFrame(animateRing);
 })();
 
@@ -36,8 +34,29 @@ document.querySelectorAll('a, button, .w-item').forEach(el => {
 const header = document.getElementById('wHeader');
 
 window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 60);
+    if (header) header.classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
+
+// ─── MOBILE HAMBURGER MENU ───────────────────────────────────────────────────
+
+const navHamburger = document.getElementById('navHamburger');
+const navMobileMenu = document.getElementById('navMobileMenu');
+
+if (navHamburger && navMobileMenu) {
+    navHamburger.addEventListener('click', () => {
+        const isOpen = navMobileMenu.classList.toggle('open');
+        navHamburger.classList.toggle('open', isOpen);
+        navHamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    navMobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMobileMenu.classList.remove('open');
+            navHamburger.classList.remove('open');
+            navHamburger.setAttribute('aria-expanded', 'false');
+        });
+    });
+}
 
 // ─── HERO COUNTER ANIMATION ──────────────────────────────────────────────────
 
@@ -305,9 +324,9 @@ function openLightbox(key) {
     // Build detail rows
     lbDetails.innerHTML = Object.entries(data.details).map(([label, val]) =>
         `<div class="w-lb-detail-row">
-            <span class="w-lb-detail-label">${label}</span>
-            <span class="w-lb-detail-val">${val}</span>
-        </div>`
+                  <span class="w-lb-detail-label">${label}</span>
+                  <span class="w-lb-detail-val">${val}</span>
+              </div>`
     ).join('');
 
     // Build thumbnails
@@ -417,9 +436,13 @@ filterBtns.forEach(btn => {
 
             if (show) {
                 item.classList.remove('w-hidden');
-                // Re-trigger animation
                 item.classList.remove('visible');
-                setTimeout(() => item.classList.add('visible'), i * 55);
+                // Override CSS data-index transition-delay so the JS setTimeout controls timing
+                item.style.transitionDelay = '0s';
+                setTimeout(() => {
+                    item.style.transitionDelay = '';
+                    item.classList.add('visible');
+                }, i * 55);
                 visible++;
             } else {
                 item.classList.add('w-hidden');
