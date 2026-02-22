@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Work — Hamed Fashion Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="work.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Custom Cursor -->
+    <div id="w-cursor"></div>
+    <div id="w-cursor-ring"></div>
+
+    <!-- ===== HEADER ===== -->
+    <header id="wHeader">
+        <nav class="navbar">
+            <a href="index.html" class="logo">HAMED</a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#work">Selected</a></li>
+                    <li><a href="work.html" class="nav-active">All Work</a></li>
+                    <li><a href="index.html#concept">Concept</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ===== PAGE HERO ===== -->
+    <section class="w-page-hero" id="wHero">
+        <div class="w-hero-bg-text" aria-hidden="true">WORK</div>
+
+        <div class="w-hero-content">
+            <div class="w-hero-meta">
+                <span class="w-hero-eyebrow">Full Archive</span>
+                <div class="w-hero-rule"></div>
+                <span class="w-hero-year">2024 — 2026</span>
+            </div>
+            <h1 class="w-hero-title">
+                All<br>
+                <em>Work.</em>
+            </h1>
+            <p class="w-hero-desc">
+                A complete record of creative direction,<br>
+                editorial styling &amp; conceptual projects.
+            </p>
+        </div>
+
+        <div class="w-hero-scroll">
+            <div class="w-hero-scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+
+        <!-- Stats bar -->
+        <div class="w-hero-stats">
+            <div class="w-stat">
+                <span class="w-stat-num" data-target="12">00</span>
+                <span class="w-stat-label">Projects</span>
+            </div>
+            <div class="w-stat-div"></div>
+            <div class="w-stat">
+                <span class="w-stat-num" data-target="4">00</span>
+                <span class="w-stat-label">Collections</span>
+            </div>
+            <div class="w-stat-div"></div>
+            <div class="w-stat">
+                <span class="w-stat-num" data-target="2">00</span>
+                <span class="w-stat-label">Years Active</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FILTER + GRID ===== -->
+    <main class="w-main" id="wMain">
+
+        <!-- Filter Bar -->
+        <div class="w-filter-bar">
+            <div class="w-filter-left">
+                <button class="w-filter-btn active" data-filter="all">All</button>
+                <div class="w-filter-sep"></div>
+
+            </div>
+            <span class="w-filter-count" id="wFilterCount">12 Projects</span>
+        </div>
+
+        <!-- Masonry Grid -->
+        <div class="w-grid" id="wGrid">
+
+            <!-- Item 1 — Large -->
+            <article class="w-item w-item--large" data-category="editorial collection" data-index="1">
+                <div class="w-item-image-wrap">
+                    <img src="images/look1.jpg" alt="Metal — Chapter I" loading="lazy">
+                    <div class="w-item-overlay">
+                        <div class="w-item-overlay-content">
+                            <span class="w-item-cat">Editorial · Collection</span>
+                            <h2 class="w-item-name">Metal</h2>
+                            <p class="w-item-sub">Chapter I</p>
+                        </div>
+                        <button class="w-item-cta" data-project="metal" aria-label="View Metal">
+                            <span>View Project</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="w-item-meta">
+                    <span class="w-item-num">01</span>
+                    <h3 class="w-item-title">Metal</h3>
+                    <span class="w-item-year">2025</span>
+                </div>
+            </article>
+
+            <!-- Item 2 — Tall -->
+            <article class="w-item w-item--tall" data-category="editorial conceptual" data-index="2">
+                <div class="w-item-image-wrap">
+                    <img src="images/look2.jpg" alt="Bloom — Chapter II" loading="lazy">
+                    <div class="w-item-overlay">
+                        <div class="w-item-overlay-content">
+                            <span class="w-item-cat">Editorial · Conceptual</span>
+                            <h2 class="w-item-name">Bloom</h2>
+                            <p class="w-item-sub">Chapter II</p>
+                        </div>
+                        <button class="w-item-cta" data-project="bloom" aria-label="View Bloom">
+                            <span>View Project</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="w-item-meta">
+                    <span class="w-item-num">02</span>
+                    <h3 class="w-item-title">Bloom</h3>
+                    <span class="w-item-year">2025</span>
+                </div>
+            </article>
+
+            <!-- Item 3 — Standard -->
+            <article class="w-item" data-category="conceptual collection" data-index="3">
+                <div class="w-item-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1516410529446-2c777cb7366d?w=800&q=80"
+                        alt="Shadow — Chapter III" loading="lazy">
+                    <div class="w-item-overlay">
+                        <div class="w-item-overlay-content">
+                            <span class="w-item-cat">Conceptual · Collection</span>
+                            <h2 class="w-item-name">Shadow</h2>
+                            <p class="w-item-sub">Chapter III</p>
+                        </div>
+                        <button class="w-item-cta" data-project="shadow" aria-label="View Shadow">
+                            <span>View Project</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="w-item-meta">
+                    <span class="w-item-num">03</span>
+                    <h3 class="w-item-title">Shadow</h3>
+                    <span class="w-item-year">2025</span>
+                </div>
+            </article>
+
+            <!-- Item 4 — Standard -->
+            <article class="w-item" data-category="editorial commercial" data-index="4">
+                <div class="w-item-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&q=80"
+                        alt="Edge — Chapter IV" loading="lazy">
+                    <div class="w-item-overlay">
+                        <div class="w-item-overlay-content">
+                            <span class="w-item-cat">Editorial · Commercial</span>
+                            <h2 class="w-item-name">Edge</h2>
+                            <p class="w-item-sub">Chapter IV</p>
+                        </div>
+                        <button class="w-item-cta" data-project="edge" aria-label="View Edge">
+                            <span>View Project</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="w-item-meta">
+                    <span class="w-item-num">04</span>
+                    <h3 class="w-item-title">Edge</h3>
+                    <span class="w-item-year">2024</span>
+                </div>
+            </article>
+
+            <!-- Item 5 — Wide -->
+            <article class="w-item w-item--wide" data-category="commercial editorial" data-index="5">
+                <div class="w-item-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80" alt="Void Campaign"
+                        loading="lazy">
+                    <div class="w-item-overlay">
+                        <div class="w-item-overlay-content">
+                            <span class="w-item-cat">Commercial · Editorial</span>
+                            <h2 class="w-item-name">Void</h2>
+                            <p class="w-item-sub">Brand Campaign</p>
+                        </div>
+                        <button class="w-item-cta" data-project="void" aria-label="View Void">
+                            <span>View Project</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="w-item-meta">
+                    <span class="w-item-num">05</span>
+                    <h3 class="w-item-title">Void</h3>
+                    <span class="w-item-year">2024</span>
+                </div>
+            </article>
+
+            <!-- Item 6 — Standard -->
+            <article class="w-item" data-category="conceptual editorial" data-index="6">
+                <div class="w-item-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?w=800&q=80" alt="Dusk Series"
+                        loading="lazy">
+                    <div class="w-item-overlay">
+                        <div class="w-item-overlay-content">
+                            <span class="w-item-cat">Conceptual · Editorial</span>
+                            <h2 class="w-item-name">Dusk</h2>
+                            <p class="w-item-sub">Portrait Series</p>
+                        </div>
+                        <button class="w-item-cta" data-project="dusk" aria-label="View Dusk">
+                            <span>View Project</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="w-item-meta">
+                    <span class="w-item-num">06</span>
+                    <h3 class="w-item-title">Dusk</h3>
+                    <span class="w-item-year">2024</span>
+                </div>
+            </article>
+
+            <!-- Item 7 — Standard -->
+            <article class="w-item" data-category="commercial collection" data-index="7">
+                <div class="w-item-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1541694769-90b4e50b73db?w=800&q=80" alt="Onyx Campaign"
+                        loading="lazy">
+                    <div class="w-item-overlay">
+                        <div class="w-item-overlay-content">
+                            <span class="w-item-cat">Commercial · Collection</span>
+                            <h2 class="w-item-name">Onyx</h2>
+                            <p class="w-item-sub">Lookbook</p>
+                        </div>
+                        <button class="w-item-cta" data-project="onyx" aria-label="View Onyx">
+                            <span>View Project</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="w-item-meta">
+                    <span class="w-item-num">07</span>
+                    <h3 class="w-item-title">Onyx</h3>
+                    <span class="w-item-year">2024</span>
+                </div>
+            </article>
+
+            <!-- Item 8 — Tall -->
+            <article class="w-item w-item--tall" data-category="editorial conceptual" data-index="8">
+                <div class="w-item-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1520052205864-92d242b3a76b?w=800&q=80"
+                        alt="Silk Studies" loading="lazy">
+                    <div class="w-item-overlay">
+                        <div class="w-item-overlay-content">
+                            <span class="w-item-cat">Editorial · Conceptual</span>
+                            <h2 class="w-item-name">Silk</h2>
+                            <p class="w-item-sub">Movement Studies</p>
+                        </div>
+                        <button class="w-item-cta" data-project="silk" aria-label="View Silk">
+                            <span>View Project</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="w-item-meta">
+                    <span class="w-item-num">08</span>
+                    <h3 class="w-item-title">Silk</h3>
+                    <span class="w-item-year">2024</span>
+                </div>
+            </article>
+
+            <!-- Item 9 — Standard -->
+            <article class="w-item" data-category="collection editorial" data-index="9">
+                <div class="w-item-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1487530811015-780a25fa0f65?w=800&q=80"
+                        alt="Petal Archive" loading="lazy">
+                    <div class="w-item-overlay">
+                        <div class="w-item-overlay-content">
+                            <span class="w-item-cat">Collection · Editorial</span>
+                            <h2 class="w-item-name">Petal</h2>
+                            <p class="w-item-sub">Archive</p>
+                        </div>
+                        <button class="w-item-cta" data-project="petal" aria-label="View Petal">
+                            <span>View Project</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="w-item-meta">
+                    <span class="w-item-num">09</span>
+                    <h3 class="w-item-title">Petal</h3>
+                    <span class="w-item-year">2024</span>
+                </div>
+            </article>
+
+            <!-- Item 10 — Standard -->
+            <article class="w-item" data-category="commercial" data-index="10">
+                <div class="w-item-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1444021465936-c6ca81d39b84?w=800&q=80"
+                        alt="Terrain Campaign" loading="lazy">
+                    <div class="w-item-overlay">
+                        <div class="w-item-overlay-content">
+                            <span class="w-item-cat">Commercial</span>
+                            <h2 class="w-item-name">Terrain</h2>
+                            <p class="w-item-sub">Campaign</p>
+                        </div>
+                        <button class="w-item-cta" data-project="terrain" aria-label="View Terrain">
+                            <span>View Project</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="w-item-meta">
+                    <span class="w-item-num">10</span>
+                    <h3 class="w-item-title">Terrain</h3>
+                    <span class="w-item-year">2024</span>
+                </div>
+            </article>
+
+            <!-- Item 11 — Standard -->
+            <article class="w-item" data-category="conceptual editorial" data-index="11">
+                <div class="w-item-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1455582916367-25f75bfc6710?w=800&q=80"
+                        alt="Opaque Series" loading="lazy">
+                    <div class="w-item-overlay">
+                        <div class="w-item-overlay-content">
+                            <span class="w-item-cat">Conceptual · Editorial</span>
+                            <h2 class="w-item-name">Opaque</h2>
+                            <p class="w-item-sub">Series</p>
+                        </div>
+                        <button class="w-item-cta" data-project="opaque" aria-label="View Opaque">
+                            <span>View Project</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="w-item-meta">
+                    <span class="w-item-num">11</span>
+                    <h3 class="w-item-title">Opaque</h3>
+                    <span class="w-item-year">2024</span>
+                </div>
+            </article>
+
+            <!-- Item 12 — Standard -->
+            <article class="w-item" data-category="collection commercial" data-index="12">
+                <div class="w-item-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=800&q=80"
+                        alt="Ritual Lookbook" loading="lazy">
+                    <div class="w-item-overlay">
+                        <div class="w-item-overlay-content">
+                            <span class="w-item-cat">Collection · Commercial</span>
+                            <h2 class="w-item-name">Ritual</h2>
+                            <p class="w-item-sub">Lookbook</p>
+                        </div>
+                        <button class="w-item-cta" data-project="ritual" aria-label="View Ritual">
+                            <span>View Project</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="w-item-meta">
+                    <span class="w-item-num">12</span>
+                    <h3 class="w-item-title">Ritual</h3>
+                    <span class="w-item-year">2024</span>
+                </div>
+            </article>
+
+        </div><!-- /w-grid -->
+
+        <!-- Empty state -->
+        <div class="w-empty" id="wEmpty" hidden>
+            <span class="w-empty-icon">◎</span>
+            <p>More Soon...</p>
+        </div>
+
+    </main>
+
+    <!-- ===== CONTACT STRIP ===== -->
+    <section class="w-contact-strip">
+        <div class="w-contact-strip-inner">
+            <div class="w-contact-strip-text">
+                <span class="w-contact-label">Next Step</span>
+                <h2 class="w-contact-heading">Have a project in mind?</h2>
+            </div>
+            <a href="index.html#contact" class="w-contact-cta">
+                <span>Start a Conversation</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M7 17L17 7M17 7H7M17 7v10" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="w-footer">
+        <div class="w-footer-inner">
+            <span class="w-footer-logo">HAMED</span>
+            <p class="w-footer-copy">© 2026 Hamed — All Rights Reserved</p>
+            <a href="index.html" class="w-footer-back">← Back to Home</a>
+        </div>
+    </footer>
+
+    <!-- ===== PROJECT LIGHTBOX ===== -->
+    <div class="w-lightbox" id="wLightbox" role="dialog" aria-modal="true" aria-label="Project View" hidden>
+        <button class="w-lb-close" id="wLbClose" aria-label="Close project">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+        </button>
+
+        <div class="w-lb-inner">
+            <!-- Left: image column -->
+            <div class="w-lb-image-col">
+                <div class="w-lb-main-img-wrap">
+                    <img id="wLbMainImg" src="" alt="">
+                </div>
+                <div class="w-lb-thumbs" id="wLbThumbs"></div>
+            </div>
+
+            <!-- Right: info column -->
+            <div class="w-lb-info-col">
+                <div class="w-lb-top">
+                    <span class="w-lb-eyebrow" id="wLbEyebrow"></span>
+                    <h2 class="w-lb-title" id="wLbTitle"></h2>
+                    <div class="w-lb-rule"></div>
+                </div>
+                <p class="w-lb-desc" id="wLbDesc"></p>
+                <div class="w-lb-details" id="wLbDetails"></div>
+                <div class="w-lb-nav">
+                    <button class="w-lb-arrow" id="wLbPrev" aria-label="Previous image">←</button>
+                    <span class="w-lb-counter" id="wLbCounter">1 / 4</span>
+                    <button class="w-lb-arrow" id="wLbNext" aria-label="Next image">→</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-lightbox-backdrop" id="wLbBackdrop"></div>
+
+    <script src="work.js"></script>
+</body>
+
+</html>

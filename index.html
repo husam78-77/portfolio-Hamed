@@ -6,10 +6,17 @@
     <title>Hamed — Fashion Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400;700&family=Montserrat:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+
 </head>
 
 <body>
+
+    <div id="wp-cursor"></div>
+    <div id="wp-cursor-ring"></div>
 
     <!-- ===== Header ===== -->
     <header>
@@ -19,6 +26,7 @@
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#work">Work</a></li>
+                    <li><a href="#projects">Projects</a></li>
                     <li><a href="#concept">Concept</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -62,10 +70,14 @@
                 <span class="about-label">The Story</span>
                 <h2>ABOUT ME</h2>
                 <p>
-                    Fashion is not just style — it is transformation. I am Hamed, a fashion creative based in Riyadh, Saudi Arabia, with a deep passion for building identities through clothing, texture, and visual storytelling.
+                    Fashion is not just style — it is transformation. I am Hamed, a fashion creative based in Riyadh,
+                    Saudi Arabia, with a deep passion for building identities through clothing, texture, and visual
+                    storytelling.
                 </p>
                 <p style="margin-top:1.2rem;">
-                    My work explores the tension between tradition and modernity, softness and edge, silence and statement. Every look I curate is a chapter in a larger narrative — one that challenges convention and celebrates individuality.
+                    My work explores the tension between tradition and modernity, softness and edge, silence and
+                    statement. Every look I curate is a chapter in a larger narrative — one that challenges convention
+                    and celebrates individuality.
                 </p>
                 <div class="about-stats">
                     <div class="stat-item">
@@ -91,7 +103,7 @@
         </div>
     </section>
 
-    <!-- ===== Selected Work Section ===== -->
+    <!-- ===== Selected Work / Chapters Section ===== -->
     <section id="work" class="chapters">
         <div class="chapters-header">
             <div class="rule"></div>
@@ -110,7 +122,8 @@
                 <div class="chapter-eyebrow">Chapter One</div>
                 <h2 class="chapter-title">Metal <em>Hard &amp; Cold</em></h2>
                 <div class="chapter-divider"></div>
-                <p class="chapter-desc">Strength found in structure. Where industrial edges meet sculptural form — armour as identity.</p>
+                <p class="chapter-desc">Strength found in structure. Where industrial edges meet sculptural form —
+                    armour as identity.</p>
                 <a href="#" class="chapter-cta">Explore the Look</a>
                 <div class="chapter-folio">p. 001</div>
             </div>
@@ -124,7 +137,8 @@
                 <div class="chapter-eyebrow">Chapter Two</div>
                 <h2 class="chapter-title">Bloom <em>Soft &amp; Alive</em></h2>
                 <div class="chapter-divider"></div>
-                <p class="chapter-desc">Softness wielded with power. Petals pressed against pavement — the feminine as force.</p>
+                <p class="chapter-desc">Softness wielded with power. Petals pressed against pavement — the feminine as
+                    force.</p>
                 <a href="#" class="chapter-cta">Explore the Look</a>
                 <div class="chapter-folio">p. 002</div>
             </div>
@@ -138,7 +152,8 @@
                 <div class="chapter-eyebrow">Chapter Three</div>
                 <h2 class="chapter-title">Shadow <em>Dark &amp; Still</em></h2>
                 <div class="chapter-divider"></div>
-                <p class="chapter-desc">Light exists only to define darkness. Silhouettes carved from silence — presence through absence.</p>
+                <p class="chapter-desc">Light exists only to define darkness. Silhouettes carved from silence — presence
+                    through absence.</p>
                 <a href="#" class="chapter-cta">Explore the Look</a>
                 <div class="chapter-folio">p. 003</div>
             </div>
@@ -152,11 +167,72 @@
                 <div class="chapter-eyebrow">Chapter Four</div>
                 <h2 class="chapter-title">Edge <em>Sharp &amp; Free</em></h2>
                 <div class="chapter-divider"></div>
-                <p class="chapter-desc">Confidence rendered in motion. The body as blade — cutting through with deliberate intention.</p>
+                <p class="chapter-desc">Confidence rendered in motion. The body as blade — cutting through with
+                    deliberate intention.</p>
                 <a href="#" class="chapter-cta">Explore the Look</a>
                 <div class="chapter-folio">p. 004</div>
             </div>
         </div>
+    </section>
+
+    <!-- ===== Projects Section (from work.html) ===== -->
+    <section id="projects" class="work-projects-section">
+
+        <!-- Header -->
+        <div class="wp-section-header">
+            <div class="wp-section-meta">
+                <span class="wp-section-eyebrow">Portfolio</span>
+                <h2 class="wp-section-title">Selected<br><em>Work</em></h2>
+            </div>
+            <span class="wp-section-count" id="wpSectionCount">05 Projects</span>
+        </div>
+
+        <!-- Filter Nav -->
+        <nav class="wp-filter-nav" aria-label="Filter projects">
+            <button class="wp-filter-btn active" data-filter="all">All</button>
+            <div class="wp-filter-divider"></div>
+            <button class="wp-filter-btn" data-filter="branding">Branding</button>
+        </nav>
+
+        <!-- Project List -->
+        <div class="wp-project-list" id="wpProjectList">
+
+            <!-- Project 01 -->
+            <article class="wp-project-item" data-category="branding creative">
+                <div class="wp-project-image-wrap">
+                    <span class="wp-project-num">01 / 05</span>
+                    <img src="images/look1.jpg" alt="Shadow">
+                </div>
+                <div class="wp-project-content">
+                    <p class="wp-project-eyebrow">Branding · Identity</p>
+                    <h3 class="wp-project-name">
+                        <span class="wp-project-name-inner">Noir<br><em>Maison</em></span>
+                    </h3>
+                    <div class="wp-project-rule"></div>
+                    <p class="wp-project-desc">A complete brand identity built for a luxury fragrance house — from
+                        monogram
+                        to packaging, rooted in restraint and quiet power.</p>
+                    <div class="wp-project-tags">
+                        <span class="wp-tag">Branding</span>
+                    </div>
+                    <a href="work.html" class="wp-project-link">
+                        View Project <span class="wp-project-link-arrow">↗</span>
+                    </a>
+                    <span class="wp-project-folio">p. 001</span>
+                </div>
+            </article>
+
+        </div><!-- /wp-project-list -->
+
+        <!-- Outro -->
+        <div class="wp-work-outro" id="wpWorkOutro">
+            <p class="wp-outro-text">Every project is a new conversation.</p>
+            <a href="#contact" class="wp-outro-link">
+                <span>Start a Project</span>
+                <span>↗</span>
+            </a>
+        </div>
+
     </section>
 
     <!-- ===== Concept & Story Section ===== -->
@@ -177,21 +253,27 @@
                     <span class="concept-num">01</span>
                     <div>
                         <h3 class="concept-block-title">The Philosophy</h3>
-                        <p class="concept-block-text">Every garment carries memory. Every silhouette holds a story. My creative process begins not with fabric, but with feeling — a mood, a tension, an unspoken truth that demands to be worn.</p>
+                        <p class="concept-block-text">Every garment carries memory. Every silhouette holds a story. My
+                            creative process begins not with fabric, but with feeling — a mood, a tension, an unspoken
+                            truth that demands to be worn.</p>
                     </div>
                 </div>
                 <div class="concept-block">
                     <span class="concept-num">02</span>
                     <div>
                         <h3 class="concept-block-title">The Process</h3>
-                        <p class="concept-block-text">From mood board to final look, I work in chapters. Each collection is built around a single emotional core — then pushed until the idea breaks into something unexpected and real.</p>
+                        <p class="concept-block-text">From mood board to final look, I work in chapters. Each collection
+                            is built around a single emotional core — then pushed until the idea breaks into something
+                            unexpected and real.</p>
                     </div>
                 </div>
                 <div class="concept-block">
                     <span class="concept-num">03</span>
                     <div>
                         <h3 class="concept-block-title">The Vision</h3>
-                        <p class="concept-block-text">I believe fashion is the most democratic art form — wearable, immediate, personal. My goal is to create looks that don't just photograph well, but that transform the person wearing them.</p>
+                        <p class="concept-block-text">I believe fashion is the most democratic art form — wearable,
+                            immediate, personal. My goal is to create looks that don't just photograph well, but that
+                            transform the person wearing them.</p>
                     </div>
                 </div>
             </div>
@@ -210,37 +292,43 @@
                 <div class="skill-card-num">01</div>
                 <div class="skill-card-icon">◈</div>
                 <h3 class="skill-card-title">Styling &amp; Curation</h3>
-                <p class="skill-card-desc">Building cohesive looks from concept to camera. Expert in layering, proportion, and editorial direction for both personal and commercial projects.</p>
+                <p class="skill-card-desc">Building cohesive looks from concept to camera. Expert in layering,
+                    proportion, and editorial direction for both personal and commercial projects.</p>
             </div>
             <div class="skill-card reveal">
                 <div class="skill-card-num">02</div>
                 <div class="skill-card-icon">◉</div>
                 <h3 class="skill-card-title">Creative Direction</h3>
-                <p class="skill-card-desc">Conceptualising full creative campaigns — from mood board to set design, wardrobe, and visual narrative, ensuring every element speaks the same language.</p>
+                <p class="skill-card-desc">Conceptualising full creative campaigns — from mood board to set design,
+                    wardrobe, and visual narrative, ensuring every element speaks the same language.</p>
             </div>
             <div class="skill-card reveal">
                 <div class="skill-card-num">03</div>
                 <div class="skill-card-icon">◎</div>
                 <h3 class="skill-card-title">Trend Research</h3>
-                <p class="skill-card-desc">Deep knowledge of global fashion movements, luxury houses, and emerging designers. Translating macro trends into authentic, wearable personal stories.</p>
+                <p class="skill-card-desc">Deep knowledge of global fashion movements, luxury houses, and emerging
+                    designers. Translating macro trends into authentic, wearable personal stories.</p>
             </div>
             <div class="skill-card reveal">
                 <div class="skill-card-num">04</div>
                 <div class="skill-card-icon">◇</div>
                 <h3 class="skill-card-title">Editorial Vision</h3>
-                <p class="skill-card-desc">Photography direction, set composition, and model collaboration. Crafting visual stories that are both technically refined and emotionally resonant.</p>
+                <p class="skill-card-desc">Photography direction, set composition, and model collaboration. Crafting
+                    visual stories that are both technically refined and emotionally resonant.</p>
             </div>
             <div class="skill-card reveal">
                 <div class="skill-card-num">05</div>
                 <div class="skill-card-icon">◆</div>
                 <h3 class="skill-card-title">Brand Alignment</h3>
-                <p class="skill-card-desc">Understanding a brand's DNA and extending it through styling choices. Bridging the gap between a brand's identity and the human story it wants to tell.</p>
+                <p class="skill-card-desc">Understanding a brand's DNA and extending it through styling choices.
+                    Bridging the gap between a brand's identity and the human story it wants to tell.</p>
             </div>
             <div class="skill-card reveal">
                 <div class="skill-card-num">06</div>
                 <div class="skill-card-icon">○</div>
                 <h3 class="skill-card-title">Cultural Fluency</h3>
-                <p class="skill-card-desc">Rooted in Saudi culture while conversant in global aesthetics. Creating work that is both locally meaningful and internationally relevant.</p>
+                <p class="skill-card-desc">Rooted in Saudi culture while conversant in global aesthetics. Creating work
+                    that is both locally meaningful and internationally relevant.</p>
             </div>
         </div>
 
@@ -275,7 +363,7 @@
             <div class="contact-right reveal-right">
                 <div class="contact-detail">
                     <span class="contact-detail-label">Email</span>
-                    <a href="mailto:email@example.com" class="contact-email">email@example.com</a>
+                    <a href="mailto:hamed@example.com" class="contact-email">hamed@example.com</a>
                 </div>
                 <div class="contact-detail">
                     <span class="contact-detail-label">Based in</span>
@@ -288,7 +376,7 @@
                         Open to projects
                     </span>
                 </div>
-                <a href="mailto:email@example.com" class="contact-cta">
+                <a href="mailto:hamed@example.com" class="contact-cta">
                     <span class="contact-cta-text">Start a Conversation</span>
                     <span class="contact-cta-arrow">&#8599;</span>
                 </a>
@@ -306,7 +394,10 @@
         <div class="overlay-backdrop"></div>
         <div class="overlay-progress"></div>
         <button class="overlay-close" id="overlayClose" aria-label="Close">
-            <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <svg viewBox="0 0 24 24">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
         </button>
         <div class="overlay-content">
             <div class="overlay-main">
@@ -329,7 +420,11 @@
         </div>
     </div>
 
+    <!-- ===== Scripts ===== -->
     <script src="script.js"></script>
+
+
+
 </body>
 
 </html>

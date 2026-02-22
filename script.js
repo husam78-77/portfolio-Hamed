@@ -267,3 +267,74 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight' && activeIdx < thumbs.length - 1) thumbs[activeIdx + 1].click();
     if (e.key === 'ArrowLeft' && activeIdx > 0) thumbs[activeIdx - 1].click();
 });
+
+
+/* ── Custom Cursor (work section) ── */
+const wpCursor = document.getElementById('wp-cursor');
+const wpCursorRing = document.getElementById('wp-cursor-ring');
+
+let mx = -100, my = -100;
+let rx = -100, ry = -100;
+
+window.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    wpCursor.style.left = mx + 'px';
+    wpCursor.style.top = my + 'px';
+});
+
+function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    wpCursorRing.style.left = rx + 'px';
+    wpCursorRing.style.top = ry + 'px';
+    requestAnimationFrame(animateRing);
+}
+animateRing();
+
+document.querySelectorAll('a, button, .wp-project-image-wrap').forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+});
+
+/* ── Scroll Reveal (work section) ── */
+const wpRevealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.wp-project-item, #wpWorkOutro').forEach(el => wpRevealObs.observe(el));
+
+/* ── Filter ── */
+const wpFilterBtns = document.querySelectorAll('.wp-filter-btn');
+const wpProjectItems = document.querySelectorAll('.wp-project-item');
+const wpCountEl = document.getElementById('wpSectionCount');
+
+wpFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+
+        wpFilterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        let visible = 0;
+        wpProjectItems.forEach((item, i) => {
+            const cats = item.dataset.category || '';
+            const show = filter === 'all' || cats.includes(filter);
+
+            if (show) {
+                item.classList.remove('hidden');
+                item.classList.remove('visible');
+                setTimeout(() => item.classList.add('visible'), i * 80);
+                visible++;
+            } else {
+                item.classList.add('hidden');
+                item.classList.remove('visible');
+            }
+        });
+
+        wpCountEl.textContent = `0${visible} Project${visible !== 1 ? 's' : ''}`;
+    });
+});
