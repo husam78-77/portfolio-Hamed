@@ -1,0 +1,62 @@
+/* =========================================
+   RESPONSIVE SYSTEM
+   ========================================= */
+
+/* ========== Large Desktop (1600px+) ========== */
+@media (min-width: 1600px) {}
+
+/* ========== Laptop (1200px – 1599px) ========== */
+@media (max-width: 1599px) {}
+
+/* ========== Small Laptop / Large Tablet (992px – 1199px) ========== */
+@media (max-width: 1199px) {
+    .w-lb-inner {
+        width: 95vw;
+        height: 85vh;
+    }
+
+    .w-lb-info-col {
+        padding: 40px;
+    }
+
+}
+
+/* ========== Tablet (768px – 991px) ========== */
+@media (max-width: 991px) {
+
+    .w-lb-inner {
+        grid-template-columns: 1fr;
+        height: 90vh;
+    }
+
+    .w-lb-image-col {
+        height: 50%;
+    }
+
+    .w-lb-info-col {
+        height: 50%;
+        overflow-y: auto;
+    }
+
+}
+
+/* ========== Large Mobile (576px – 767px) ========== */
+@media (max-width: 767px) {
+
+    .w-lb-title {
+        font-size: 2rem;
+    }
+
+    .w-lb-info-col {
+        padding: 28px;
+    }
+
+    .w-lb-thumb {
+        width: 60px;
+        height: 46px;
+    }
+
+}
+
+/* ========== Small Mobile (<576px) ========== */
+@media (max-width: 575px) {}
