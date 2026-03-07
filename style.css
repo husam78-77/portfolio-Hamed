@@ -13,6 +13,163 @@
     --transition-smooth: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
+/* ===== HEADER — Haikal-style collapsible right nav ===== */
+
+header.site-header {
+    position: fixed;
+    top: 2.5em;
+    right: 0;
+    z-index: 9000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    pointer-events: none;
+    width: auto;
+    background: transparent;
+}
+
+/* Top links row */
+.header-inner {
+    pointer-events: all;
+    display: flex;
+    align-items: center;
+    background: rgba(80, 80, 80, 0.90);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    height: 2.6em;
+    overflow: hidden;
+    /* slide in/out using max-width on the links wrapper, not the whole header */
+}
+
+/* × buttons */
+.nav-close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4em;
+    height: 2.6em;
+    flex-shrink: 0;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9rem;
+    cursor: pointer;
+    pointer-events: all;
+    padding: 0;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.nav-close-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Collapsible links area — only this slides, not the whole header */
+.nav-links-wrap {
+    display: flex;
+    align-items: center;
+    max-width: 600px;
+    overflow: hidden;
+    transition: max-width 0.35s ease, opacity 0.25s ease;
+    opacity: 1;
+}
+
+header.site-header.collapsed .nav-links-wrap {
+    max-width: 0;
+    opacity: 0;
+}
+
+/* Right × button also hides when collapsed */
+.nav-close-btn-right {
+    max-width: 2.4em;
+    overflow: hidden;
+    transition: max-width 0.35s ease, opacity 0.25s ease;
+    opacity: 1;
+}
+
+header.site-header.collapsed .nav-close-btn-right {
+    max-width: 0;
+    opacity: 0;
+    padding: 0;
+}
+
+/* Nav links */
+.main-nav {
+    pointer-events: all;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav ul li a {
+    display: block;
+    padding: 0 0.9em;
+    height: 2.6em;
+    line-height: 2.6em;
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    white-space: nowrap;
+    text-transform: uppercase;
+    transition: background 0.15s;
+}
+
+.main-nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Progress bar row */
+.header-progress-row {
+    pointer-events: all;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0 8px;
+    height: 1.2em;
+    width: 100%;
+    background: rgba(65, 65, 65, 0.92);
+    box-sizing: border-box;
+    transition: width 0.35s ease;
+}
+
+.header-progress-arrow {
+    font-size: 0.4rem;
+    color: rgba(255, 255, 255, 0.5);
+    flex-shrink: 0;
+    user-select: none;
+    line-height: 1;
+}
+
+.header-progress-track {
+    flex: 1;
+    height: 2.5px;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.header-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: rgba(255, 255, 255, 0.72);
+    border-radius: 2px;
+    transition: width 0.1s linear;
+}
+
+/* Hide old hamburger */
+.menu-toggle {
+    display: none !important;
+}
+
+
 html {
     scroll-behavior: smooth;
 }
@@ -26,109 +183,13 @@ body {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
 }
 
-/* ===== HEADER ===== */
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 80px;
-    background: transparent;
-    transition: background 0.5s ease, backdrop-filter 0.5s ease;
-    z-index: 1000;
-}
 
-header.scrolled {
-    background: rgba(15, 15, 15, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(198, 167, 94, 0.08);
-}
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 5%;
-    height: 100%;
-}
 
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    margin-left: auto;
-}
+
 
 /* ── Desktop nav: hidden by default, slides in on navbar hover ── */
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-}
 
-.nav-links li {
-    opacity: 0;
-    transform: translateX(16px);
-    pointer-events: none;
-    transition: opacity 0.35s ease, transform 0.35s ease;
-}
-
-.navbar:hover .nav-links li {
-    opacity: 1;
-    transform: translateX(0);
-    pointer-events: auto;
-}
-
-.nav-links li:nth-child(1) {
-    transition-delay: 0.04s;
-}
-
-.nav-links li:nth-child(2) {
-    transition-delay: 0.08s;
-}
-
-.nav-links li:nth-child(3) {
-    transition-delay: 0.12s;
-}
-
-.nav-links li:nth-child(4) {
-    transition-delay: 0.16s;
-}
-
-.nav-links li:nth-child(5) {
-    transition-delay: 0.20s;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--color-text-main);
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 0.78rem;
-    letter-spacing: 2.5px;
-    transition: color 0.25s ease;
-    position: relative;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--color-accent);
-    transition: width 0.3s var(--transition-smooth);
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-.nav-links a:hover {
-    color: var(--color-accent);
-}
 
 .logo {
     font-weight: 700;
@@ -139,104 +200,13 @@ header.scrolled {
 }
 
 /* ── Hamburger button (hidden on desktop) ── */
-.nav-hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    z-index: 1100;
-}
 
-.nav-hamburger span {
-    display: block;
-    width: 24px;
-    height: 1.5px;
-    background: var(--color-text-main);
-    transition: transform 0.35s ease, opacity 0.3s ease;
-    transform-origin: center;
-}
 
-.nav-hamburger.open span:nth-child(1) {
-    transform: translateY(6.5px) rotate(45deg);
-}
 
-.nav-hamburger.open span:nth-child(2) {
-    opacity: 0;
-    transform: scaleX(0);
-}
-
-.nav-hamburger.open span:nth-child(3) {
-    transform: translateY(-6.5px) rotate(-45deg);
-}
 
 /* ── Mobile dropdown ── */
-.nav-mobile-menu {
-    display: none;
-    position: absolute;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    background: rgba(12, 12, 12, 0.97);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(198, 167, 94, 0.12);
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-}
 
-.nav-mobile-menu.open {
-    max-height: 400px;
-    padding: 0.5rem 0 1.5rem;
-}
 
-.nav-mobile-menu ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    padding: 0 7%;
-}
-
-.nav-mobile-menu ul li a {
-    display: block;
-    padding: 1rem 0;
-    text-decoration: none;
-    color: var(--color-text-main);
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    transition: color 0.25s ease, padding-left 0.25s ease;
-}
-
-.nav-mobile-menu ul li:last-child a {
-    border-bottom: none;
-}
-
-.nav-mobile-menu ul li a:hover {
-    color: var(--color-accent);
-    padding-left: 8px;
-}
-
-/* ── Mobile breakpoint ── */
-@media (max-width: 768px) {
-    .nav-right {
-        display: none;
-    }
-
-    .nav-hamburger {
-        display: flex;
-    }
-
-    .nav-mobile-menu {
-        display: block;
-    }
-}
 
 /* ===== HERO ===== */
 .hero {
@@ -1866,14 +1836,7 @@ body .chapter-content {
     }
 }
 
-/* ===== NAV LINK count update ===== */
-.nav-links li:nth-child(4) {
-    transition-delay: 0.16s;
-}
 
-.nav-links li:nth-child(5) {
-    transition-delay: 0.20s;
-}
 
 
 /* ─── WORK SECTION SCOPED VARS & BASE ──────────────────────────────── */

@@ -91,32 +91,26 @@ heroSection.addEventListener('mouseleave', () => {
 
 // ─── HEADER SCROLL BEHAVIOUR ──────────────────────────────────────────────────
 
-const header = document.querySelector('header');
+const header = document.querySelector('.site-header');
 
 window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
-// ─── MOBILE HAMBURGER MENU ───────────────────────────────────────────────────
+// ─── NAV COLLAPSE (Haikal-style) ─────────────────────────────────────────────
 
-const navHamburger = document.getElementById('navHamburger');
-const navMobileMenu = document.getElementById('navMobileMenu');
+document.addEventListener('DOMContentLoaded', () => {
+    const siteHeader = document.getElementById('siteHeader');
+    const navToggleBtns = document.querySelectorAll('.nav-close-btn');
 
-if (navHamburger && navMobileMenu) {
-    navHamburger.addEventListener('click', () => {
-        const isOpen = navMobileMenu.classList.toggle('open');
-        navHamburger.classList.toggle('open', isOpen);
-        navHamburger.setAttribute('aria-expanded', isOpen);
-    });
-
-    navMobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navMobileMenu.classList.remove('open');
-            navHamburger.classList.remove('open');
-            navHamburger.setAttribute('aria-expanded', 'false');
+    if (siteHeader && navToggleBtns.length) {
+        navToggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                siteHeader.classList.toggle('collapsed');
+            });
         });
-    });
-}
+    }
+});
 
 // ─── INTERSECTION OBSERVER — reveal animations ────────────────────────────────
 
@@ -158,48 +152,32 @@ const overlayDesc = document.getElementById('overlayDescription');
 const galleryCount = document.getElementById('galleryCount');
 
 const chapterData = {
-    Metal: {
-        main: 'images/look1.jpg',
-        description: 'Cold precision meets raw beauty. A study in reflective surfaces and industrial tension.',
+    "Noir Maison": {
+        main: "images/look1.jpg",
+        description: "A complete brand identity built for a luxury fragrance house.",
         gallery: [
-            'images/look1.jpg',
-            'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=70',
-            'https://images.unsplash.com/photo-1541960071727-c531398e7b79?w=400&q=70',
-            'https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=400&q=70',
+            "images/look1.jpg",
+            "images/look2.jpg",
+            "images/look1.jpg"
         ]
     },
-    Bloom: {
-        main: 'https://images.unsplash.com/photo-1490750967868-88df5691cc5e?w=1200&q=80',
-        description: 'Softness rendered sharp. The paradox of fragile things that endure seasons.',
+    "Bloom Studio": {
+        main: "images/look2.jpg",
+        description: "Creative direction exploring softness and strength.",
         gallery: [
-            'https://images.unsplash.com/photo-1490750967868-88df5691cc5e?w=400&q=70',
-            'https://images.unsplash.com/photo-1444021465936-c6ca81d39b84?w=400&q=70',
-            'https://images.unsplash.com/photo-1487530811015-780a25fa0f65?w=400&q=70',
-            'https://images.unsplash.com/photo-1455582916367-25f75bfc6710?w=400&q=70',
+            "images/look2.jpg",
+            "images/look1.jpg"
         ]
     },
-    Shadow: {
-        main: 'https://images.unsplash.com/photo-1516410529446-2c777cb7366d?w=1200&q=80',
-        description: 'What exists between light and dark is not nothing — it is everything left unseen.',
+    "Shadow Line": {
+        main: "images/look3.jpg",
+        description: "Editorial study of silence, contrast and presence.",
         gallery: [
-            'https://images.unsplash.com/photo-1516410529446-2c777cb7366d?w=400&q=70',
-            'https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?w=400&q=70',
-            'https://images.unsplash.com/photo-1520052205864-92d242b3a76b?w=400&q=70',
-            'https://images.unsplash.com/photo-1541694769-90b4e50b73db?w=400&q=70',
-        ]
-    },
-    Edge: {
-        main: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1200&q=80',
-        description: 'The boundary is not a limit. It is the beginning of the next form.',
-        gallery: [
-            'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&q=70',
-            'https://images.unsplash.com/photo-1519810755548-39cd217da494?w=400&q=70',
-            'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=70',
-            'https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&q=70',
+            "images/look3.jpg",
+            "images/look1.jpg"
         ]
     }
 };
-
 function setActiveThumb(thumbEl) {
     overlayGallery.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
     thumbEl.classList.add('active');
@@ -255,15 +233,15 @@ function closeOverlay() {
     document.body.style.overflow = '';
 }
 
-// Open overlay from chapter CTA buttons
-document.querySelectorAll('.chapter-cta').forEach(btn => {
-    btn.addEventListener('click', function (e) {
+/* ── OPEN OVERLAY FROM WORK GRID ── */
+
+document.querySelectorAll('.wp-project-card').forEach(card => {
+    card.addEventListener('click', function (e) {
         e.preventDefault();
-        const titleEl = this.closest('.chapter-item').querySelector('.chapter-title');
-        const title = [...titleEl.childNodes]
-            .filter(n => n.nodeType === Node.TEXT_NODE)
-            .map(n => n.nodeValue.trim())
-            .find(t => t.length > 0);
+
+        const titleEl = this.querySelector('.wp-project-title');
+        const title = titleEl.textContent.trim();
+
         openOverlay(title);
     });
 });
@@ -360,3 +338,31 @@ wpFilterBtns.forEach(btn => {
         if (wpCountEl) wpCountEl.textContent = `0${visible} Project${visible !== 1 ? 's' : ''}`;
     });
 });
+
+
+
+
+
+if (sideClose) {
+    sideClose.addEventListener('click', () => {
+        sideNav.classList.remove('open');
+        document.body.style.overflow = '';
+    });
+}
+
+document.querySelectorAll('.side-nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        sideNav.classList.remove('open');
+        document.body.style.overflow = '';
+    });
+});
+/* ── Nav scroll progress bar ── */
+const navProgressFill = document.getElementById('navProgressFill');
+if (navProgressFill) {
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        navProgressFill.style.width = pct + '%';
+    }, { passive: true });
+}

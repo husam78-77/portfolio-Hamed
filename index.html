@@ -19,22 +19,35 @@
     <div id="wp-cursor-ring"></div>
 
     <!-- ===== HEADER ===== -->
-    <header class="site-header">
+    <header class="site-header" id="siteHeader">
 
+        <!-- links row -->
         <div class="header-inner">
+            <!-- Left × always visible — toggles nav -->
+            <button class="nav-close-btn" id="navToggleBtn" aria-label="Toggle nav">&times;</button>
+            <!-- This wrapper slides in/out -->
+            <div class="nav-links-wrap">
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#home">HOME</a></li>
+                        <li><a href="#about">ABOUT</a></li>
+                        <li><a href="#concept">CONCEPT</a></li>
+                        <li><a href="#projects">WORK</a></li>
+                        <li><a href="#contact">CONTACT</a></li>
+                    </ul>
+                </nav>
+                <!-- Right × also hides when collapsed -->
+                <button class="nav-close-btn nav-close-btn-right" aria-label="Toggle nav">&times;</button>
+            </div>
+        </div>
 
-            <button class="menu-toggle" aria-label="Open Menu">☰</button>
-
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#">ABOUT</a></li>
-                    <li><a href="#">TECHNO</a></li>
-                    <li><a href="#">WORK</a></li>
-                    <li><a href="#">CONTACT</a></li>
-                </ul>
-            </nav>
-
+        <!-- progress bar row -->
+        <div class="header-progress-row">
+            <span class="header-progress-arrow">&#9664;</span>
+            <div class="header-progress-track">
+                <div class="header-progress-fill" id="navProgressFill"></div>
+            </div>
+            <span class="header-progress-arrow">&#9654;</span>
         </div>
 
     </header>
@@ -69,31 +82,44 @@
     <!-- ===== About Section ===== -->
     <section id="about" class="about-section">
         <div class="about-container">
+
             <div class="about-text reveal-left">
                 <span class="about-label">The Story</span>
                 <h2>ABOUT ME</h2>
+
                 <p>
-                    Fashion is not just style — it is transformation. I am Hamed, a fashion creative based in Riyadh,
-                    Saudi Arabia, with a deep passion for building identities through clothing, texture, and visual
-                    storytelling.
+                    Visual arts, fashion, and photography are my language — a way of expressing identity, mood, and
+                    individuality. They represent a space for free expression without rules.
                 </p>
+
                 <p style="margin-top:1.2rem;">
-                    My work explores the tension between tradition and modernity, softness and edge, silence and
-                    statement. Every look I curate is a chapter in a larger narrative — one that challenges convention
-                    and celebrates individuality.
+                    I am <strong>Hamed Mohamed</strong> — model, stylist, and creative director — striving to create
+                    content
+                    that reflects my personality and artistic vision. I believe perfection lies in the details, and I
+                    focus
+                    on producing honest, high-quality work that leaves a lasting visual impact.
                 </p>
+
+                <p style="margin-top:1.2rem;">
+                    My passion extends across all forms of visual arts. I enjoy developing projects that translate
+                    emotion
+                    into image and concept into presence.
+                </p>
+
                 <div class="about-stats">
                     <div class="stat-item">
                         <span class="stat-number">4+</span>
-                        <span class="stat-label">Collections</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">2+</span>
                         <span class="stat-label">Years of Work</span>
                     </div>
+
                     <div class="stat-item">
-                        <span class="stat-number">KSA</span>
-                        <span class="stat-label">Based</span>
+                        <span class="stat-number">Model · Stylist</span>
+                        <span class="stat-label">Creative Director</span>
+                    </div>
+
+                    <div class="stat-item">
+                        <span class="stat-number">Riyadh</span>
+                        <span class="stat-label">Saudi Arabia</span>
                     </div>
                 </div>
             </div>
@@ -101,13 +127,11 @@
             <div class="about-image-wrapper reveal-right">
                 <div class="about-bg-live"></div>
                 <div class="about-accent"></div>
-                <img src="images/look1.jpg" alt="About Image">
+                <img src="images/look1.jpg" alt="Hamed Mohamed">
             </div>
+
         </div>
     </section>
-
-    <!-- ===== Selected Work / Chapters Section ===== -->
-
     <!-- ===== Projects Section (from work.html) ===== -->
     <section id="projects" class="work-projects-section">
 
@@ -195,6 +219,7 @@
         <div class="concept-bg-text" aria-hidden="true">STORY</div>
 
         <div class="concept-inner">
+
             <div class="concept-left reveal-left">
                 <span class="concept-label">Concept &amp; Story</span>
                 <h2 class="concept-heading">
@@ -204,139 +229,145 @@
             </div>
 
             <div class="concept-right reveal-right">
+
+                <!-- 01 -->
                 <div class="concept-block">
                     <span class="concept-num">01</span>
                     <div>
                         <h3 class="concept-block-title">The Philosophy</h3>
-                        <p class="concept-block-text">Every garment carries memory. Every silhouette holds a story. My
-                            creative process begins not with fabric, but with feeling — a mood, a tension, an unspoken
-                            truth that demands to be worn.</p>
+                        <p class="concept-block-text">
+                            Every piece of clothing carries a deeper meaning. When these elements come together,
+                            they create a story — a mood — a powerful way to express identity.
+                            Fashion is not just fabric; it is a visual language of the self.
+                        </p>
                     </div>
                 </div>
+
+                <!-- 02 -->
                 <div class="concept-block">
                     <span class="concept-num">02</span>
                     <div>
                         <h3 class="concept-block-title">The Process</h3>
-                        <p class="concept-block-text">From mood board to final look, I work in chapters. Each collection
-                            is built around a single emotional core — then pushed until the idea breaks into something
-                            unexpected and real.</p>
+                        <p class="concept-block-text">
+                            My process begins with inspiration — an idea that reflects my vision.
+                            I translate that idea into a mood board, explore creative directions,
+                            and carefully develop every detail. From concept to execution,
+                            I focus on bringing the project to life exactly as I imagine it.
+                        </p>
                     </div>
                 </div>
+
+                <!-- 03 -->
                 <div class="concept-block">
                     <span class="concept-num">03</span>
                     <div>
                         <h3 class="concept-block-title">The Vision</h3>
-                        <p class="concept-block-text">I believe fashion is the most democratic art form — wearable,
-                            immediate, personal. My goal is to create looks that don't just photograph well, but that
-                            transform the person wearing them.</p>
+                        <p class="concept-block-text">
+                            Fashion, creativity, and styling are more than projects to me.
+                            They are about creating identity, building atmosphere, and shaping a feeling
+                            that others can experience. Through my work, I aim to inspire self-discovery
+                            and a deeper understanding of personal expression.
+                        </p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
-
-    <!-- ===== Skills & Vision Section ===== -->
+    <!-- ===== Skills Section ===== -->
     <section id="skills" class="skills-section">
+
         <div class="skills-header reveal">
-            <span class="skills-label">Skills &amp; Vision</span>
+            <span class="skills-label">Expertise</span>
             <h2 class="skills-heading">What I Bring</h2>
         </div>
 
         <div class="skills-grid">
+
             <div class="skill-card reveal">
                 <div class="skill-card-num">01</div>
-                <div class="skill-card-icon">◈</div>
-                <h3 class="skill-card-title">Styling &amp; Curation</h3>
-                <p class="skill-card-desc">Building cohesive looks from concept to camera. Expert in layering,
-                    proportion, and editorial direction for both personal and commercial projects.</p>
+                <h3 class="skill-card-title">Styling &amp; Modeling</h3>
             </div>
+
             <div class="skill-card reveal">
                 <div class="skill-card-num">02</div>
-                <div class="skill-card-icon">◉</div>
-                <h3 class="skill-card-title">Creative Direction</h3>
-                <p class="skill-card-desc">Conceptualising full creative campaigns — from mood board to set design,
-                    wardrobe, and visual narrative, ensuring every element speaks the same language.</p>
+                <h3 class="skill-card-title">Creative Direction &amp; Storytelling</h3>
             </div>
+
             <div class="skill-card reveal">
                 <div class="skill-card-num">03</div>
-                <div class="skill-card-icon">◎</div>
-                <h3 class="skill-card-title">Trend Research</h3>
-                <p class="skill-card-desc">Deep knowledge of global fashion movements, luxury houses, and emerging
-                    designers. Translating macro trends into authentic, wearable personal stories.</p>
+                <h3 class="skill-card-title">Photography &amp; Post-Editing</h3>
             </div>
+
             <div class="skill-card reveal">
                 <div class="skill-card-num">04</div>
-                <div class="skill-card-icon">◇</div>
-                <h3 class="skill-card-title">Editorial Vision</h3>
-                <p class="skill-card-desc">Photography direction, set composition, and model collaboration. Crafting
-                    visual stories that are both technically refined and emotionally resonant.</p>
+                <h3 class="skill-card-title">Filmmaking &amp; Videography</h3>
             </div>
-            <div class="skill-card reveal">
-                <div class="skill-card-num">05</div>
-                <div class="skill-card-icon">◆</div>
-                <h3 class="skill-card-title">Brand Alignment</h3>
-                <p class="skill-card-desc">Understanding a brand's DNA and extending it through styling choices.
-                    Bridging the gap between a brand's identity and the human story it wants to tell.</p>
-            </div>
-            <div class="skill-card reveal">
-                <div class="skill-card-num">06</div>
-                <div class="skill-card-icon">○</div>
-                <h3 class="skill-card-title">Cultural Fluency</h3>
-                <p class="skill-card-desc">Rooted in Saudi culture while conversant in global aesthetics. Creating work
-                    that is both locally meaningful and internationally relevant.</p>
-            </div>
+
         </div>
 
-        <div class="skills-vision reveal">
-            <div class="skills-vision-quote">
-                <span class="skills-vision-mark">"</span>
-                <p>I don't dress people. I build characters. The clothes are the script — and the body is the stage.</p>
-            </div>
-        </div>
     </section>
-
     <!-- ===== Contact Section ===== -->
     <section id="contact" class="contact-section">
         <span class="contact-bg-word" aria-hidden="true">CONTACT</span>
+
         <div class="contact-inner">
+
+            <!-- Left -->
             <div class="contact-left reveal-left">
-                <span class="contact-label">Get in Touch</span>
+                <span class="contact-label">Contact</span>
+
                 <h2 class="contact-heading">
-                    Let's make<br>
-                    <em>something</em><br>
-                    together.
+                    For professional collaborations<br>
+                    and creative projects,<br>
+                    <em>get in touch.</em>
                 </h2>
+
                 <div class="contact-rule"></div>
+
                 <div class="contact-socials">
-                    <a href="#" class="social-link" aria-label="Instagram">
+                    <a href="https://instagram.com/6lhamid" target="_blank" class="social-link" aria-label="Instagram">
                         <span class="social-icon">&#x25A1;</span>
-                        <span>Instagram</span>
+                        <span>@6lhamid</span>
                     </a>
                 </div>
             </div>
 
+            <!-- Right -->
             <div class="contact-right reveal-right">
+
+                <!-- Email -->
                 <div class="contact-detail">
                     <span class="contact-detail-label">Email</span>
-                    <a href="/cdn-cgi/l/email-protection#e189808c8485a18499808c918d84cf828e8c"
-                        class="contact-email"><span class="__cf_email__"
-                            data-cfemail="543c3539313014312c35392438317a373b39">[email&#160;protected]</span></a>
+                    <a href="/cdn-cgi/l/email-protection#aac2cbc7c3ce879c849beac2c5dec7cbc3c684c9c5c7"
+                        class="contact-email">
+                        <span class="__cf_email__"
+                            data-cfemail="c9a1a8a4a0ade4ffe7f889a1a6bda4a8a0a5e7aaa6a4">[email&#160;protected]</span>
+                    </a>
                 </div>
+
+                <!-- WhatsApp -->
                 <div class="contact-detail">
-                    <span class="contact-detail-label">Based in</span>
-                    <span class="contact-detail-value">Riyadh, Saudi Arabia</span>
+                    <span class="contact-detail-label">WhatsApp / Calling</span>
+                    <a href="https://wa.me/966598278083" class="contact-email" target="_blank">
+                        +966598278083
+                    </a>
                 </div>
+
+                <!-- Instagram -->
                 <div class="contact-detail">
-                    <span class="contact-detail-label">Availability</span>
-                    <span class="contact-detail-value">
-                        <span class="availability-dot"></span>
-                        Open to projects
-                    </span>
+                    <span class="contact-detail-label">Instagram</span>
+                    <a href="https://instagram.com/6lhamid" target="_blank" class="contact-detail-value">
+                        @6lhamid
+                    </a>
                 </div>
-                <a href="/cdn-cgi/l/email-protection#4f272e222a2b0f2a372e223f232a612c2022" class="contact-cta">
+
+                <!-- CTA -->
+                <a href="/cdn-cgi/l/email-protection#046c65696d6029322a35446c6b7069656d682a676b69" class="contact-cta">
                     <span class="contact-cta-text">Start a Conversation</span>
                     <span class="contact-cta-arrow">&#8599;</span>
                 </a>
+
             </div>
         </div>
     </section>
@@ -378,7 +409,6 @@
     </div>
 
     <script src="script.js"></script>
-
 </body>
 
 </html>
