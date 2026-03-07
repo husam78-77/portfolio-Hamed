@@ -152,26 +152,24 @@ const overlayDesc = document.getElementById('overlayDescription');
 const galleryCount = document.getElementById('galleryCount');
 
 const chapterData = {
-    "Noir Maison": {
+    "UnNamed-1": {
         main: "images/look1.jpg",
-        description: "A complete brand identity built for a luxury fragrance house.",
+
         gallery: [
             "images/look1.jpg",
             "images/look2.jpg",
             "images/look1.jpg"
         ]
     },
-    "Bloom Studio": {
+    "UnNamed-2": {
         main: "images/look2.jpg",
-        description: "Creative direction exploring softness and strength.",
         gallery: [
             "images/look2.jpg",
             "images/look1.jpg"
         ]
     },
-    "Shadow Line": {
+    "UnNamed-3": {
         main: "images/look3.jpg",
-        description: "Editorial study of silence, contrast and presence.",
         gallery: [
             "images/look3.jpg",
             "images/look1.jpg"
