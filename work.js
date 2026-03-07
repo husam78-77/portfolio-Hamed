@@ -437,7 +437,6 @@ filterBtns.forEach(btn => {
             if (show) {
                 item.classList.remove('w-hidden');
                 item.classList.remove('visible');
-                // Override CSS data-index transition-delay so the JS setTimeout controls timing
                 item.style.transitionDelay = '0s';
                 setTimeout(() => {
                     item.style.transitionDelay = '';

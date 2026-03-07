@@ -18,34 +18,25 @@
     <div id="wp-cursor"></div>
     <div id="wp-cursor-ring"></div>
 
-    <!-- ===== Header ===== -->
-    <header id="siteHeader">
-        <nav class="navbar">
-            <a href="#home" class="logo">HAMED</a>
-            <div class="nav-right">
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#work">Selected</a></li>
-                    <li><a href="work.html">All Work</a></li>
-                    <li><a href="#concept">Concept</a></li>
-                    <li><a href="#contact">Contact</a></li>
+    <!-- ===== HEADER ===== -->
+    <header class="site-header">
+
+        <div class="header-inner">
+
+            <button class="menu-toggle" aria-label="Open Menu">☰</button>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">TECHNO</a></li>
+                    <li><a href="#">WORK</a></li>
+                    <li><a href="#">CONTACT</a></li>
                 </ul>
-            </div>
-            <!-- Mobile hamburger -->
-            <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-        </nav>
-        <!-- Mobile dropdown -->
-        <div class="nav-mobile-menu" id="navMobileMenu">
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#work">Selected</a></li>
-                <li><a href="work.html">All Work</a></li>
-                <li><a href="#concept">Concept</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            </nav>
+
         </div>
+
     </header>
 
     <!-- ===== Hero Section ===== -->
@@ -116,76 +107,6 @@
     </section>
 
     <!-- ===== Selected Work / Chapters Section ===== -->
-    <section id="work" class="chapters">
-        <div class="chapters-header">
-            <div class="rule"></div>
-            <div class="label">
-                <span></span>
-                Selected Work
-            </div>
-            <div class="rule"></div>
-        </div>
-
-        <div class="chapter-item">
-            <div class="chapter-image" data-num="No. 01">
-                <img src="images/look1.jpg" alt="Metal">
-            </div>
-            <div class="chapter-content">
-                <div class="chapter-eyebrow">Chapter One</div>
-                <h2 class="chapter-title">Metal <em>Hard &amp; Cold</em></h2>
-                <div class="chapter-divider"></div>
-                <p class="chapter-desc">Strength found in structure. Where industrial edges meet sculptural form —
-                    armour as identity.</p>
-                <a href="#" class="chapter-cta">Explore the Look</a>
-                <div class="chapter-folio">p. 001</div>
-            </div>
-        </div>
-
-        <div class="chapter-item reverse">
-            <div class="chapter-image" data-num="No. 02">
-                <img src="images/look2.jpg" alt="Bloom">
-            </div>
-            <div class="chapter-content">
-                <div class="chapter-eyebrow">Chapter Two</div>
-                <h2 class="chapter-title">Bloom <em>Soft &amp; Alive</em></h2>
-                <div class="chapter-divider"></div>
-                <p class="chapter-desc">Softness wielded with power. Petals pressed against pavement — the feminine as
-                    force.</p>
-                <a href="#" class="chapter-cta">Explore the Look</a>
-                <div class="chapter-folio">p. 002</div>
-            </div>
-        </div>
-
-        <div class="chapter-item">
-            <div class="chapter-image" data-num="No. 03">
-                <img src="images/look1.jpg" alt="Shadow">
-            </div>
-            <div class="chapter-content">
-                <div class="chapter-eyebrow">Chapter Three</div>
-                <h2 class="chapter-title">Shadow <em>Dark &amp; Still</em></h2>
-                <div class="chapter-divider"></div>
-                <p class="chapter-desc">Light exists only to define darkness. Silhouettes carved from silence — presence
-                    through absence.</p>
-                <a href="#" class="chapter-cta">Explore the Look</a>
-                <div class="chapter-folio">p. 003</div>
-            </div>
-        </div>
-
-        <div class="chapter-item reverse">
-            <div class="chapter-image" data-num="No. 04">
-                <img src="images/look2.jpg" alt="Edge">
-            </div>
-            <div class="chapter-content">
-                <div class="chapter-eyebrow">Chapter Four</div>
-                <h2 class="chapter-title">Edge <em>Sharp &amp; Free</em></h2>
-                <div class="chapter-divider"></div>
-                <p class="chapter-desc">Confidence rendered in motion. The body as blade — cutting through with
-                    deliberate intention.</p>
-                <a href="#" class="chapter-cta">Explore the Look</a>
-                <div class="chapter-folio">p. 004</div>
-            </div>
-        </div>
-    </section>
 
     <!-- ===== Projects Section (from work.html) ===== -->
     <section id="projects" class="work-projects-section">
@@ -206,36 +127,58 @@
             <button class="wp-filter-btn" data-filter="branding">Branding</button>
         </nav>
 
-        <!-- Project List -->
-        <div class="wp-project-list" id="wpProjectList">
+        <!-- Project Grid -->
+        <div class="wp-project-grid" id="wpProjectList">
 
             <!-- Project 01 -->
-            <article class="wp-project-item" data-category="branding creative">
-                <div class="wp-project-image-wrap">
-                    <span class="wp-project-num">01 / 05</span>
-                    <img src="images/look1.jpg" alt="Shadow">
-                </div>
-                <div class="wp-project-content">
-                    <p class="wp-project-eyebrow">Branding · Identity</p>
-                    <h3 class="wp-project-name">
-                        <span class="wp-project-name-inner">Noir<br><em>Maison</em></span>
-                    </h3>
-                    <div class="wp-project-rule"></div>
-                    <p class="wp-project-desc">A complete brand identity built for a luxury fragrance house — from
-                        monogram
-                        to packaging, rooted in restraint and quiet power.</p>
-                    <div class="wp-project-tags">
-                        <span class="wp-tag">Branding</span>
+            <article class="wp-project-card" data-category="branding creative">
+                <a href="work.html" class="wp-project-link-wrap">
+
+                    <div class="wp-project-image">
+                        <img src="images/look1.jpg" alt="Noir Maison">
                     </div>
-                    <a href="work.html" class="wp-project-link">
-                        View Project <span class="wp-project-link-arrow">↗</span>
-                    </a>
-                    <span class="wp-project-folio">p. 001</span>
-                </div>
+
+                    <div class="wp-project-info">
+                        <p class="wp-project-category">Branding · Identity</p>
+                        <h3 class="wp-project-title">Noir Maison</h3>
+                    </div>
+
+                </a>
             </article>
 
-        </div><!-- /wp-project-list -->
+            <!-- Project 02 -->
+            <article class="wp-project-card" data-category="branding">
+                <a href="#" class="wp-project-link-wrap">
 
+                    <div class="wp-project-image">
+                        <img src="images/look2.jpg" alt="Project Two">
+                    </div>
+
+                    <div class="wp-project-info">
+                        <p class="wp-project-category">Creative Direction</p>
+                        <h3 class="wp-project-title">Bloom Studio</h3>
+                    </div>
+
+                </a>
+            </article>
+
+            <!-- Project 03 -->
+            <article class="wp-project-card" data-category="creative">
+                <a href="#" class="wp-project-link-wrap">
+
+                    <div class="wp-project-image">
+                        <img src="images/look3.jpg" alt="Project Three">
+                    </div>
+
+                    <div class="wp-project-info">
+                        <p class="wp-project-category">Editorial</p>
+                        <h3 class="wp-project-title">Shadow Line</h3>
+                    </div>
+
+                </a>
+            </article>
+
+        </div>
         <!-- Outro -->
         <div class="wp-work-outro" id="wpWorkOutro">
             <p class="wp-outro-text">Every project is a new conversation.</p>
