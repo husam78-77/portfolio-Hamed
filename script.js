@@ -152,27 +152,62 @@ const overlayDesc = document.getElementById('overlayDescription');
 const galleryCount = document.getElementById('galleryCount');
 
 const chapterData = {
-    "UnNamed-1": {
-        main: "images/look1.jpg",
-
+    "the dreamer": {
+        main: "images/Cover-1.jpeg",
+        description: "True essence always finds a way to shine, no matter the environment.",
         gallery: [
-            "images/look1.jpg",
-            "images/look2.jpg",
-            "images/look1.jpg"
+            "images/Cover-1.jpeg",
+            "images/1-X.jpeg",
+            "images/1-XX.jpeg",
+            "images/1-XXX.jpeg",
+            "images/1-XXXX.jpeg"
         ]
     },
-    "UnNamed-2": {
-        main: "images/look2.jpg",
+    "Bloom in silence": {
+        main: "images/Cover-2.jpeg",
+        description: "Quiet elegance , a silence loud with beauty",
         gallery: [
-            "images/look2.jpg",
-            "images/look1.jpg"
+            "images/Cover-2.jpeg",
+            "images/2-X.jpeg",
+            "images/2-XX.jpeg",
+            "images/2-XXX.jpeg",
+            "images/2-XXXX.jpeg",
+            "images/2-XXXXX.jpeg",
+            "images/2-XXXXXX.jpeg",
+            "images/2-XXXXXXX.jpeg"
         ]
     },
-    "UnNamed-3": {
-        main: "images/look3.jpg",
+    "Phantom": {
+        main: "images/Cover-3.jpeg",
+        description: "Beyond the fading light , lies the power",
         gallery: [
-            "images/look3.jpg",
-            "images/look1.jpg"
+            "images/Cover-3.jpeg",
+            "images/3-X.jpeg",
+            "images/3-XX.jpeg",
+            "images/3-XXX.jpeg",
+            "images/3-XXXX.jpeg",
+            "images/3-XXXXX.jpeg",
+            "images/3-XXXXXX.jpeg"
+        ]
+    },
+    "Urban pules": {
+        main: "images/Cover-4.jpeg",
+        description: "Black pules , energy in the dark",
+        gallery: [
+            "images/Cover-4.jpeg",
+            "images/4-X.jpeg",
+            "images/4-XX.jpeg",
+        ]
+    },
+    "Others": {
+        main: "images/O-XXXX.jpeg",
+        gallery: [
+            "images/O-XXXX.jpeg",
+            "images/O-XXXXXX.jpeg",
+            "images/O-XXXXX.jpeg",
+            "images/O-X.png",
+            "images/O-XX.jpeg",
+            "images/O-XXX.jpeg",
         ]
     }
 };

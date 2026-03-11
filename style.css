@@ -125,22 +125,10 @@ header.site-header.collapsed .nav-close-btn-right {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Progress bar row */
-.header-progress-row {
-    pointer-events: all;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 0 8px;
-    height: 1.2em;
-    width: 100%;
-    background: rgba(65, 65, 65, 0.92);
-    box-sizing: border-box;
-    transition: width 0.35s ease;
-}
+
 
 .header-progress-arrow {
-    font-size: 0.4rem;
+    font-size: 0.0rem;
     color: rgba(255, 255, 255, 0.5);
     flex-shrink: 0;
     user-select: none;
@@ -1016,13 +1004,14 @@ body .chapter-content {
 .overlay-image-pane img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
     display: block;
-    transition: transform 10s ease, opacity 0.3s ease;
+    transition: opacity 0.3s ease;
 }
 
 .chapter-overlay.active .overlay-image-pane img {
-    transform: scale(1.04);
+    transform: scale(1);
 }
 
 /* Vignette on image */
@@ -2380,5 +2369,665 @@ body.cursor-hover #wp-cursor-ring {
 
     .wp-filter-nav {
         gap: 0;
+    }
+}
+
+/* ================================================================
+   COMPREHENSIVE RESPONSIVE FIXES — All Platforms
+   Breakpoints:
+     ≤ 1200px  → Large tablet / small laptop
+     ≤ 900px   → Tablet (iPad landscape)
+     ≤ 768px   → Tablet portrait / small tablet
+     ≤ 600px   → Large phone (iPhone Plus / Pro Max)
+     ≤ 430px   → Standard phone (iPhone 14 / 15)
+     ≤ 375px   → Small phone (iPhone SE)
+================================================================ */
+
+/* ── Prevent horizontal overflow globally ── */
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* ── Hide custom cursor on touch devices ── */
+@media (hover: none) {
+
+    #wp-cursor,
+    #wp-cursor-ring {
+        display: none !important;
+    }
+}
+
+/* ================================================================
+   HEADER / NAV
+================================================================ */
+@media (max-width: 600px) {
+    header.site-header {
+        top: 1rem;
+    }
+
+    .main-nav ul li a {
+        padding: 0 0.6em;
+        font-size: 0.52rem;
+        letter-spacing: 0.1em;
+    }
+
+    .nav-links-wrap {
+        max-width: 100vw;
+    }
+
+    .header-inner {
+        height: 2.4em;
+    }
+
+    .nav-close-btn {
+        height: 2.4em;
+    }
+}
+
+@media (max-width: 430px) {
+    .main-nav ul li a {
+        padding: 0 0.45em;
+        font-size: 0.48rem;
+    }
+}
+
+/* ================================================================
+   HERO SECTION
+================================================================ */
+@media (max-width: 900px) {
+    .hero-title {
+        font-size: clamp(1.6rem, 5vw, 3rem);
+        letter-spacing: 8px;
+    }
+
+    .hero-sub {
+        font-size: clamp(0.75rem, 2.5vw, 1rem);
+        letter-spacing: 3px;
+    }
+
+    .scroll-cue {
+        right: 3%;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-title {
+        font-size: clamp(1.4rem, 7vw, 2.2rem);
+        letter-spacing: 5px;
+    }
+
+    .hero-sub {
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+    }
+
+    .scroll-cue {
+        display: none;
+    }
+
+    .foreground {
+        width: 92%;
+        height: 75%;
+    }
+}
+
+@media (max-width: 430px) {
+    .hero-title {
+        font-size: clamp(1.1rem, 8vw, 1.8rem);
+        letter-spacing: 4px;
+    }
+
+    .hero-sub {
+        font-size: 0.65rem;
+        letter-spacing: 1.5px;
+    }
+}
+
+/* ================================================================
+   ABOUT SECTION
+================================================================ */
+@media (max-width: 1200px) {
+    .about-section {
+        padding: 100px 6%;
+    }
+
+    .about-container {
+        gap: 60px;
+    }
+}
+
+@media (max-width: 900px) {
+    .about-section {
+        padding: 80px 6%;
+    }
+
+    .about-container {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .about-text {
+        flex: unset;
+        width: 100%;
+    }
+
+    .about-image-wrapper {
+        flex: unset;
+        width: 100%;
+        height: 65vw;
+        max-height: 500px;
+    }
+
+    .about-text h2 {
+        font-size: clamp(1.6rem, 4vw, 2.5rem);
+    }
+
+    .about-text p {
+        max-width: 100%;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-section {
+        padding: 70px 5%;
+    }
+
+    .about-image-wrapper {
+        height: 70vw;
+    }
+
+    .about-accent {
+        transform: translate(16px, 16px);
+    }
+
+    .about-stats {
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .stat-number {
+        font-size: clamp(1.4rem, 5vw, 2rem);
+    }
+}
+
+@media (max-width: 430px) {
+    .about-section {
+        padding: 60px 5%;
+        min-height: unset;
+    }
+
+    .about-image-wrapper {
+        height: 75vw;
+    }
+
+    .about-stats {
+        gap: 1.5rem;
+    }
+}
+
+/* ================================================================
+   WORK / PROJECTS SECTION
+================================================================ */
+@media (max-width: 1200px) {
+    .work-projects-section {
+        padding: 100px 6% 140px;
+    }
+
+    .wp-section-title {
+        font-size: clamp(2.5rem, 5vw, 5rem);
+    }
+}
+
+@media (max-width: 900px) {
+    .work-projects-section {
+        padding: 80px 5% 120px;
+        max-width: 100%;
+    }
+
+    .wp-project-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 20px;
+    }
+
+    .wp-section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 50px;
+    }
+
+    .wp-section-title {
+        font-size: clamp(2.2rem, 6vw, 4rem);
+    }
+
+    .wp-filter-nav {
+        margin-bottom: 60px;
+    }
+
+    .wp-work-outro {
+        flex-direction: column;
+        gap: 24px;
+        align-items: flex-start;
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 600px) {
+    .work-projects-section {
+        padding: 70px 5% 100px;
+    }
+
+    .wp-project-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .wp-project-image {
+        aspect-ratio: 3 / 4;
+    }
+
+    .wp-section-title {
+        font-size: clamp(2rem, 9vw, 3rem);
+    }
+
+    .wp-filter-nav {
+        margin-bottom: 44px;
+    }
+}
+
+@media (max-width: 430px) {
+    .work-projects-section {
+        padding: 60px 4% 80px;
+    }
+
+    .wp-project-grid {
+        gap: 32px;
+    }
+
+    .wp-project-title {
+        font-size: 1rem;
+    }
+}
+
+/* ================================================================
+   CONCEPT & STORY SECTION
+================================================================ */
+@media (max-width: 1200px) {
+    .concept-section {
+        padding: 100px 6%;
+    }
+
+    .concept-inner {
+        gap: 70px;
+    }
+}
+
+@media (max-width: 900px) {
+    .concept-section {
+        padding: 80px 5%;
+    }
+
+    .concept-inner {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .concept-left {
+        flex: unset;
+        width: 100%;
+        position: static;
+    }
+
+    .concept-heading {
+        font-size: clamp(2rem, 7vw, 3.5rem);
+    }
+
+    .concept-block-text {
+        max-width: 100%;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .concept-section {
+        padding: 70px 5%;
+        min-height: unset;
+    }
+
+    .concept-block-title {
+        font-size: 1.15rem;
+    }
+
+    .concept-block-text {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 430px) {
+    .concept-section {
+        padding: 60px 5%;
+    }
+
+    .concept-heading {
+        font-size: clamp(1.8rem, 9vw, 2.8rem);
+    }
+
+    .concept-block {
+        gap: 1.2rem;
+    }
+}
+
+/* ================================================================
+   SKILLS SECTION
+================================================================ */
+@media (max-width: 1200px) {
+    .skills-section {
+        padding: 100px 6%;
+    }
+}
+
+@media (max-width: 900px) {
+    .skills-section {
+        padding: 80px 5%;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skill-card {
+        padding: 36px 28px;
+    }
+
+    .skills-header {
+        margin-bottom: 56px;
+    }
+}
+
+@media (max-width: 600px) {
+    .skills-section {
+        padding: 70px 5%;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        margin-bottom: 56px;
+    }
+
+    .skill-card {
+        padding: 32px 24px;
+    }
+
+    .skills-heading {
+        font-size: clamp(1.6rem, 7vw, 2.5rem);
+    }
+}
+
+@media (max-width: 430px) {
+    .skills-section {
+        padding: 60px 5%;
+    }
+
+    .skill-card-title {
+        font-size: 1.05rem;
+    }
+}
+
+/* ================================================================
+   CONTACT SECTION
+================================================================ */
+@media (max-width: 1200px) {
+    .contact-section {
+        padding: 100px 6%;
+    }
+}
+
+@media (max-width: 900px) {
+    .contact-section {
+        padding: 80px 5%;
+    }
+
+    .contact-inner {
+        gap: 60px;
+    }
+
+    .contact-heading {
+        font-size: clamp(1.8rem, 4.5vw, 3.5rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 80px 5%;
+        min-height: unset;
+    }
+
+    .contact-inner {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .contact-left,
+    .contact-right {
+        flex: unset;
+        width: 100%;
+    }
+
+    .contact-heading {
+        font-size: clamp(1.6rem, 6vw, 2.8rem);
+        letter-spacing: 1px;
+    }
+
+    .contact-email {
+        font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+        word-break: break-all;
+    }
+
+    .contact-right {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-section {
+        padding: 70px 5%;
+    }
+
+    .contact-heading {
+        font-size: clamp(1.4rem, 7vw, 2.2rem);
+    }
+
+    .contact-bg-word {
+        font-size: clamp(4rem, 22vw, 8rem);
+    }
+
+    .contact-cta {
+        width: 100%;
+        justify-content: space-between;
+        padding: 1rem 1.5rem;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 430px) {
+    .contact-section {
+        padding: 60px 5%;
+    }
+
+    .contact-heading {
+        font-size: clamp(1.2rem, 8vw, 1.8rem);
+        letter-spacing: 0.5px;
+    }
+
+    .contact-detail-label {
+        font-size: 0.6rem;
+    }
+
+    .contact-email {
+        font-size: 0.9rem;
+    }
+}
+
+/* ================================================================
+   CHAPTER OVERLAY
+================================================================ */
+@media (max-width: 900px) {
+    .overlay-main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 50vh auto;
+        overflow-y: auto;
+    }
+
+    .overlay-info-pane {
+        padding: 40px 36px;
+        justify-content: flex-start;
+    }
+
+    .overlay-title {
+        font-size: clamp(2.5rem, 8vw, 5rem);
+    }
+}
+
+@media (max-width: 600px) {
+    .overlay-main {
+        grid-template-rows: 45vh auto;
+    }
+
+    .overlay-info-pane {
+        padding: 32px 24px;
+    }
+
+    .overlay-title {
+        font-size: clamp(2rem, 9vw, 3.5rem);
+        margin-bottom: 20px;
+    }
+
+    .overlay-gallery-strip {
+        padding: 0 20px;
+    }
+
+    .gallery-thumb {
+        width: 100px;
+        height: 68px;
+    }
+
+    .gallery-count {
+        display: none;
+    }
+
+    .overlay-close {
+        top: 14px;
+        right: 14px;
+        width: 38px;
+        height: 38px;
+    }
+}
+
+@media (max-width: 430px) {
+    .overlay-main {
+        grid-template-rows: 42vh auto;
+    }
+
+    .overlay-info-pane {
+        padding: 24px 20px;
+    }
+
+    .overlay-title {
+        font-size: clamp(1.8rem, 10vw, 3rem);
+    }
+
+    .overlay-description {
+        font-size: 0.72rem;
+        max-width: 100%;
+    }
+
+    .gallery-thumb {
+        width: 80px;
+        height: 56px;
+    }
+}
+
+/* ================================================================
+   FOOTER
+================================================================ */
+@media (max-width: 600px) {
+    footer {
+        padding: 1.5rem 1rem;
+        font-size: 0.65rem;
+        letter-spacing: 1.5px;
+    }
+}
+
+/* ================================================================
+   REVEAL ANIMATIONS — disable heavy transforms on small screens
+================================================================ */
+@media (max-width: 600px) {
+    .reveal-left {
+        transform: translateX(-30px);
+    }
+
+    .reveal-right {
+        transform: translateX(30px);
+    }
+
+    .reveal {
+        transform: translateY(30px);
+    }
+}
+
+/* ================================================================
+   IPAD PRO / LANDSCAPE TABLET (768px – 1024px)
+================================================================ */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .about-container {
+        gap: 48px;
+    }
+
+    .about-image-wrapper {
+        height: 55vw;
+        max-height: 460px;
+    }
+
+    .concept-left {
+        flex: 0 0 260px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .wp-project-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 48px 24px;
+    }
+
+    .overlay-main {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: unset;
+    }
+}
+
+/* ================================================================
+   SAFE AREA (iPhone notch / Dynamic Island)
+================================================================ */
+@supports (padding: max(0px)) {
+    header.site-header {
+        top: max(1.5rem, env(safe-area-inset-top));
+        right: max(0px, env(safe-area-inset-right));
+    }
+
+    footer {
+        padding-bottom: max(2rem, env(safe-area-inset-bottom));
+    }
+
+    .contact-section,
+    .skills-section,
+    .concept-section,
+    .about-section {
+        padding-left: max(5%, env(safe-area-inset-left));
+        padding-right: max(5%, env(safe-area-inset-right));
     }
 }
