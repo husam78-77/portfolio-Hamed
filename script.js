@@ -1,92 +1,19 @@
-// ─── HERO SLIDER ────────────────────────────────────────────────────────────
+// ─── HERO MANUAL SLIDER ────────────────────────────────────────────────────
 
-const slides = document.querySelectorAll('.slide');
-let current = 0;
-let autoplayTimer;
+const heroSlides = document.querySelectorAll('.hero-slide');
+const heroDotBtns = document.querySelectorAll('#heroDots .hero-dot');
+let heroCurrent = 0;
 
-const ORIGINS = [
-    { x: '50%', y: '50%' },
-    { x: '0%', y: '50%' },
-    { x: '100%', y: '50%' },
-    { x: '50%', y: '0%' },
-    { x: '50%', y: '100%' },
-];
-
-/**
- * Assign a unique reveal origin to every slide at load time.
- * Consecutive slides will always differ.
- */
-function assignOrigins() {
-    let lastIdx = -1;
-    slides.forEach(slide => {
-        let idx;
-        do { idx = Math.floor(Math.random() * ORIGINS.length); }
-        while (idx === lastIdx && ORIGINS.length > 1);
-        lastIdx = idx;
-
-        const { x, y } = ORIGINS[idx];
-        slide.style.setProperty('--x', x);
-        slide.style.setProperty('--y', y);
-    });
-}
-assignOrigins();
-
-// ─── Progress dots ───────────────────────────────────────────────────────────
-
-const dotsContainer = document.getElementById('heroDots');
-
-function buildDots() {
-    slides.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
-        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-        dot.addEventListener('click', () => goTo(i));
-        dotsContainer.appendChild(dot);
-    });
-}
-buildDots();
-
-function updateDots() {
-    dotsContainer.querySelectorAll('.hero-dot').forEach((dot, i) => {
-        dot.classList.toggle('active', i === current);
-    });
+function heroGoTo(index) {
+    heroSlides[heroCurrent].classList.remove('active');
+    heroDotBtns[heroCurrent].classList.remove('active');
+    heroCurrent = (index + heroSlides.length) % heroSlides.length;
+    heroSlides[heroCurrent].classList.add('active');
+    heroDotBtns[heroCurrent].classList.add('active');
 }
 
-// ─── Slide navigation ────────────────────────────────────────────────────────
-
-function goTo(index) {
-    slides[current].classList.remove('active');
-    current = (index + slides.length) % slides.length;
-    slides[current].classList.add('active');
-    updateDots();
-    resetAutoplay();
-}
-
-function next() {
-    goTo(current + 1);
-}
-
-function resetAutoplay() {
-    clearInterval(autoplayTimer);
-    autoplayTimer = setInterval(next, 5000);
-}
-
-resetAutoplay();
-
-// ─── Cursor-tracking hero title parallax ─────────────────────────────────────
-
-const heroSection = document.querySelector('.hero');
-const heroTitle = document.querySelector('.hero-title');
-
-heroSection.addEventListener('mousemove', (e) => {
-    const { clientWidth: w, clientHeight: h } = heroSection;
-    const dx = (e.clientX / w - 0.5) * 18;
-    const dy = (e.clientY / h - 0.5) * 10;
-    heroTitle.style.transform = `translate(${dx}px, ${dy}px)`;
-});
-
-heroSection.addEventListener('mouseleave', () => {
-    heroTitle.style.transform = 'translate(0, 0)';
+heroDotBtns.forEach((dot, i) => {
+    dot.addEventListener('click', () => heroGoTo(i));
 });
 
 // ─── HEADER SCROLL BEHAVIOUR ──────────────────────────────────────────────────
@@ -200,14 +127,14 @@ const chapterData = {
         ]
     },
     "Others": {
-        main: "images/O-XXXX.jpeg",
+        main: "images/O-X.png",
         gallery: [
-            "images/O-XXXX.jpeg",
-            "images/O-XXXXXX.jpeg",
-            "images/O-XXXXX.jpeg",
             "images/O-X.png",
             "images/O-XX.jpeg",
             "images/O-XXX.jpeg",
+            "images/O-XXXX.jpeg",
+            "images/O-XXXXX.jpeg",
+            "images/O-XXXXXX.jpeg",
         ]
     }
 };
