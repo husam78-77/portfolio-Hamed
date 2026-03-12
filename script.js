@@ -109,9 +109,9 @@ const chapterData = {
         description: "Beyond the fading light , lies the power",
         gallery: [
             "images/Cover-3.jpeg",
-            "images/3-X.jpeg",
+            "images/3-X.JPEG",
             "images/3-XX.JPEG",
-            "images/3-XXX.JPEG",
+            "images/3-XXX.jpeg",
             "images/3-XXXX.jpeg",
             "images/3-XXXXX.jpeg",
             "images/3-XXXXXX.jpeg"
