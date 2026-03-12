@@ -110,8 +110,8 @@ const chapterData = {
         gallery: [
             "images/Cover-3.jpeg",
             "images/3-X.jpeg",
-            "images/3-XX.jpeg",
-            "images/3-XXX.jpeg",
+            "images/3-XX.JPEG",
+            "images/3-XXX.JPEG",
             "images/3-XXXX.jpeg",
             "images/3-XXXXX.jpeg",
             "images/3-XXXXXX.jpeg"
@@ -127,11 +127,11 @@ const chapterData = {
         ]
     },
     "Others": {
-        main: "images/O-X.png",
+        main: "images/O-X.PNG",
         gallery: [
-            "images/O-X.png",
+            "images/O-X.PNG",
             "images/O-XX.jpeg",
-            "images/O-XXX.jpeg",
+            "images/O-XXX.JPEG",
             "images/O-XXXX.jpeg",
             "images/O-XXXXX.jpeg",
             "images/O-XXXXXX.jpeg",
